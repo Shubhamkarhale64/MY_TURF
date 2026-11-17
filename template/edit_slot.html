@@ -1,0 +1,335 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Slot | MY TURF</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f4f7f5;
+            color: #1c3024;
+            min-height: 100vh;
+        }
+
+        header {
+            background: #10291d;
+            color: white;
+            padding: 20px 6%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 14px;
+        }
+
+        .brand {
+            font-size: 25px;
+            font-weight: 800;
+            letter-spacing: 1px;
+        }
+
+        .brand span {
+            color: #8be0a4;
+        }
+
+        .back-link {
+            color: white;
+            text-decoration: none;
+            border: 1px solid #ffffff60;
+            padding: 11px 16px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .back-link:hover {
+            background: #ffffff15;
+        }
+
+        .container {
+            max-width: 760px;
+            width: 92%;
+            margin: 42px auto;
+        }
+
+        .eyebrow {
+            color: #197542;
+            font-size: 12px;
+            font-weight: 800;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        h1 {
+            color: #10291d;
+            font-size: 32px;
+            margin: 10px 0;
+        }
+
+        .intro {
+            color: #718076;
+            line-height: 1.6;
+            margin-bottom: 27px;
+        }
+
+        .card {
+            background: white;
+            border: 1px solid #e0e9e2;
+            border-radius: 16px;
+            padding: 30px;
+            box-shadow: 0 8px 28px #10291d08;
+        }
+
+        .card h2 {
+            font-size: 20px;
+            color: #173c27;
+            margin-bottom: 8px;
+        }
+
+        .card-description {
+            color: #829087;
+            font-size: 13px;
+            line-height: 1.6;
+            margin-bottom: 25px;
+        }
+
+        .field {
+            margin-bottom: 22px;
+        }
+
+        label {
+            display: block;
+            font-size: 14px;
+            font-weight: 700;
+            color: #344b3b;
+            margin-bottom: 9px;
+        }
+
+        input {
+            display: block;
+            width: 100%;
+            padding: 13px 14px;
+            border: 1px solid #d5e0d7;
+            border-radius: 9px;
+            font-size: 15px;
+            color: #203428;
+            background: #fbfdfb;
+            outline: none;
+        }
+
+        input:focus {
+            border-color: #24834a;
+            box-shadow: 0 0 0 3px #24834a18;
+        }
+
+        input[readonly] {
+            background: #edf3ee;
+            color: #45604d;
+            cursor: not-allowed;
+        }
+
+        .field-hint {
+            font-size: 12px;
+            color: #829087;
+            margin-top: 7px;
+        }
+
+        .divider {
+            height: 1px;
+            background: #e7eee8;
+            margin: 26px 0;
+        }
+
+        .actions {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-top: 28px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 13px 20px;
+            border: none;
+            border-radius: 8px;
+            text-decoration: none;
+            text-align: center;
+            font-size: 14px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .btn-primary {
+            background: #176b3a;
+            color: white;
+            flex: 1;
+        }
+
+        .btn-primary:hover {
+            background: #10532d;
+        }
+
+        .btn-secondary {
+            background: #edf2ee;
+            color: #294634;
+        }
+
+        .btn-secondary:hover {
+            background: #dfe9e1;
+        }
+
+        footer {
+            text-align: center;
+            padding: 25px 15px;
+            color: #829087;
+            font-size: 13px;
+        }
+
+        @media (max-width: 550px) {
+            header {
+                padding: 18px 5%;
+            }
+
+            .container {
+                margin: 28px auto;
+            }
+
+            h1 {
+                font-size: 27px;
+            }
+
+            .card {
+                padding: 22px 17px;
+            }
+
+            .actions {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <div class="brand">MY <span>TURF</span></div>
+    <a class="back-link" href="{% url 'manage_slots' %}">
+        ← Manage Slots
+    </a>
+</header>
+
+<main class="container">
+
+    <div class="eyebrow">Owner Dashboard</div>
+    <h1>Edit Booking Slot</h1>
+    <p class="intro">
+        Update the slot date, timing and price for your turf.
+        Check the details carefully before saving.
+    </p>
+
+    <section class="card">
+        <h2>Slot Information</h2>
+        <p class="card-description">
+            Change the fields below and click Update Slot to save your changes.
+        </p>
+
+        <form method="POST">
+            {% csrf_token %}
+
+            <div class="field">
+                <label for="turf">Turf Name</label>
+                <input
+                    type="text"
+                    id="turf"
+                    value="{{ slot.turf.name }}"
+                    readonly
+                >
+                <p class="field-hint">
+                    The turf assigned to this slot cannot be changed here.
+                </p>
+            </div>
+
+            <div class="divider"></div>
+
+            <div class="field">
+                <label for="date">Slot Date *</label>
+                <input
+                    type="date"
+                    id="date"
+                    name="date"
+                    value="{{ slot.date|date:'Y-m-d' }}"
+                    min="{% now 'Y-m-d' %}"
+                    required
+                >
+            </div>
+
+            <div class="field">
+                <label for="start_time">Start Time *</label>
+                <input
+                    type="time"
+                    id="start_time"
+                    name="start_time"
+                    value="{{ slot.start_time|time:'H:i' }}"
+                    required
+                >
+            </div>
+
+            <div class="field">
+                <label for="end_time">End Time *</label>
+                <input
+                    type="time"
+                    id="end_time"
+                    name="end_time"
+                    value="{{ slot.end_time|time:'H:i' }}"
+                    required
+                >
+            </div>
+
+            <div class="field">
+                <label for="price">Slot Price (₹) *</label>
+                <input
+                    type="number"
+                    id="price"
+                    name="price"
+                    value="{{ slot.price }}"
+                    step="0.01"
+                    min="0.01"
+                    required
+                >
+            </div>
+
+            <div class="actions">
+                <button type="submit" class="btn btn-primary">
+                    Save Changes
+                </button>
+
+                <a href="{% url 'manage_slots' %}"
+                   class="btn btn-secondary">
+                    Cancel
+                </a>
+            </div>
+        </form>
+    </section>
+
+</main>
+
+<footer>
+    © MY TURF · Turf Booking Management
+</footer>
+
+</body>
+</html>

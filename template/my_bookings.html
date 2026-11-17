@@ -1,0 +1,525 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>My Bookings - MY TURF</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f4f7f4;
+            color: #17251b;
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        .navbar {
+            background: #102c1c;
+            color: white;
+            padding: 17px 6%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .logo {
+            color: #86efac;
+            font-size: 25px;
+            font-weight: 800;
+            letter-spacing: 1px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .nav-links a {
+            color: #e5f4e8;
+            font-size: 14px;
+        }
+
+        .nav-links a:hover {
+            color: #86efac;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #14532d, #166534);
+            color: white;
+            padding: 40px 6%;
+        }
+
+        .hero .eyebrow {
+            color: #bbf7d0;
+            font-size: 13px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+
+        .hero h1 {
+            font-size: clamp(28px, 4vw, 39px);
+            margin: 8px 0;
+        }
+
+        .hero p {
+            color: #e1f5e6;
+        }
+
+        .container {
+            max-width: 1050px;
+            margin: auto;
+            padding: 30px 20px 55px;
+        }
+
+        .breadcrumb {
+            font-size: 14px;
+            color: #647067;
+            margin-bottom: 24px;
+        }
+
+        .breadcrumb a {
+            color: #166534;
+            font-weight: bold;
+        }
+
+        .section-heading {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 22px;
+        }
+
+        .section-heading h2 {
+            font-size: 24px;
+        }
+
+        .booking-count {
+            background: #dcfce7;
+            color: #166534;
+            padding: 6px 13px;
+            border-radius: 30px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .booking-card {
+            background: white;
+            border: 1px solid #e1e9e2;
+            border-radius: 16px;
+            margin-bottom: 22px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(16, 44, 28, 0.035);
+        }
+
+        .card-header {
+            background: #fbfdfb;
+            padding: 20px 24px;
+            border-bottom: 1px solid #e7eee8;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .turf-name {
+            color: #14532d;
+            font-size: 21px;
+            font-weight: bold;
+        }
+
+        .booking-id {
+            color: #647067;
+            font-size: 13px;
+            margin-top: 4px;
+            overflow-wrap: anywhere;
+        }
+
+        .status-group {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .status {
+            display: inline-block;
+            border-radius: 30px;
+            padding: 5px 10px;
+            font-size: 11px;
+            font-weight: bold;
+        }
+
+        .status-confirmed,
+        .status-success,
+        .status-completed {
+            background: #dcfce7;
+            color: #166534;
+        }
+
+        .status-pending {
+            background: #fef3c7;
+            color: #92400e;
+        }
+
+        .status-cancelled,
+        .status-failed,
+        .status-rejected {
+            background: #fee2e2;
+            color: #991b1b;
+        }
+
+        .status-refunded {
+            background: #dbeafe;
+            color: #1d4ed8;
+        }
+
+        .status-default {
+            background: #edf0ed;
+            color: #46534a;
+        }
+
+        .card-body {
+            padding: 23px 24px;
+        }
+
+        .details-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 22px;
+        }
+
+        .detail-label {
+            display: block;
+            font-size: 12px;
+            color: #647067;
+            margin-bottom: 5px;
+        }
+
+        .detail-value {
+            font-size: 15px;
+            font-weight: bold;
+            overflow-wrap: anywhere;
+        }
+
+        .amount {
+            font-size: 23px;
+            color: #166534;
+        }
+
+        .card-footer {
+            padding: 17px 24px;
+            border-top: 1px solid #e7eee8;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 43px;
+            padding: 10px 17px;
+            border-radius: 9px;
+            border: none;
+            font-size: 13px;
+            font-weight: bold;
+            cursor: pointer;
+            font-family: inherit;
+            transition: 0.2s;
+        }
+
+        .btn-primary {
+            background: #16a34a;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #15803d;
+        }
+
+        .btn-danger {
+            background: white;
+            color: #b91c1c;
+            border: 1px solid #fecaca;
+        }
+
+        .btn-danger:hover {
+            background: #fef2f2;
+        }
+
+        .empty-state {
+            background: white;
+            border: 1px dashed #cbd5ce;
+            border-radius: 16px;
+            text-align: center;
+            padding: 50px 20px;
+        }
+
+        .empty-icon {
+            font-size: 46px;
+            margin-bottom: 12px;
+        }
+
+        .empty-state h3 {
+            font-size: 22px;
+            margin-bottom: 8px;
+        }
+
+        .empty-state p {
+            color: #647067;
+            margin-bottom: 22px;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 26px;
+            color: #166534;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        .footer {
+            background: #102c1c;
+            color: #cbd5ce;
+            padding: 24px 6%;
+            text-align: center;
+            font-size: 13px;
+        }
+
+        @media (max-width: 600px) {
+            .navbar {
+                padding: 15px 5%;
+            }
+
+            .nav-links {
+                gap: 12px;
+            }
+
+            .hero {
+                padding: 30px 5%;
+            }
+
+            .container {
+                padding: 24px 14px 40px;
+            }
+
+            .card-header,
+            .card-body,
+            .card-footer {
+                padding: 18px;
+            }
+
+            .details-grid {
+                grid-template-columns: 1fr;
+                gap: 17px;
+            }
+
+            .card-footer .btn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <a href="{% url 'home' %}" class="logo">⚽ MY TURF</a>
+
+        <div class="nav-links">
+            <a href="{% url 'home' %}">Home</a>
+            <a href="{% url 'turf_search' %}">Find Turfs</a>
+            <a href="{% url 'customer_profile' %}">My Profile</a>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <p class="eyebrow">Your game, your schedule</p>
+        <h1>My Bookings</h1>
+        <p>View your reservations, track payment status and manage your bookings.</p>
+    </section>
+
+    <main class="container">
+
+        <div class="breadcrumb">
+            <a href="{% url 'home' %}">Home</a>
+            &nbsp; / &nbsp; My Bookings
+        </div>
+
+        <div class="section-heading">
+            <h2>Your Reservations</h2>
+
+            {% if bookings %}
+                <span class="booking-count">
+                    {{ bookings|length }} booking{{ bookings|length|pluralize }}
+                </span>
+            {% endif %}
+        </div>
+
+        {% if bookings %}
+
+            {% for booking in bookings %}
+
+                <article class="booking-card">
+
+                    <div class="card-header">
+                        <div>
+                            <h3 class="turf-name">
+                                {{ booking.turf.name }}
+                            </h3>
+
+                            <p class="booking-id">
+                                Booking ID: {{ booking.booking_code }}
+                            </p>
+                        </div>
+
+                        <div class="status-group">
+                            <span class="status
+                                {% if booking.booking_status == 'CONFIRMED' %}
+                                    status-confirmed
+                                {% elif booking.booking_status == 'COMPLETED' %}
+                                    status-completed
+                                {% elif booking.booking_status == 'PENDING' %}
+                                    status-pending
+                                {% elif booking.booking_status == 'CANCELLED' %}
+                                    status-cancelled
+                                {% else %}
+                                    status-default
+                                {% endif %}
+                            ">
+                                {{ booking.booking_status }}
+                            </span>
+
+                            <span class="status
+                                {% if booking.payment_status == 'SUCCESS' %}
+                                    status-success
+                                {% elif booking.payment_status == 'PENDING' %}
+                                    status-pending
+                                {% elif booking.payment_status == 'FAILED' %}
+                                    status-failed
+                                {% elif booking.payment_status == 'REFUNDED' %}
+                                    status-refunded
+                                {% else %}
+                                    status-default
+                                {% endif %}
+                            ">
+                                Payment: {{ booking.payment_status }}
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="card-body">
+                        <div class="details-grid">
+
+                            <div>
+                                <span class="detail-label">BOOKING DATE</span>
+                                <p class="detail-value">
+                                    {{ booking.booking_date|date:"d M Y" }}
+                                </p>
+                            </div>
+
+                            <div>
+                                <span class="detail-label">PLAYING TIME</span>
+                                <p class="detail-value">
+                                    {{ booking.slot.start_time|time:"h:i A" }}
+                                    – {{ booking.slot.end_time|time:"h:i A" }}
+                                </p>
+                            </div>
+
+                            <div>
+                                <span class="detail-label">TOTAL AMOUNT</span>
+                                <p class="detail-value amount">
+                                    ₹{{ booking.amount }}
+                                </p>
+                            </div>
+
+                            <div>
+                                <span class="detail-label">TURF LOCATION</span>
+                                <p class="detail-value">
+                                    {{ booking.turf.area }}, {{ booking.turf.city }}
+                                </p>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="card-footer">
+
+                        <a
+                            href="{% url 'booking_summary' booking.id %}"
+                            class="btn btn-primary"
+                        >
+                            View Booking Details →
+                        </a>
+
+                        {% if booking.booking_status == "CONFIRMED" %}
+                            <form
+                                method="POST"
+                                action="{% url 'cancel_booking' booking.id %}"
+                                onsubmit="return confirm('Are you sure you want to cancel this booking?');"
+                            >
+                                {% csrf_token %}
+
+                                <button type="submit" class="btn btn-danger">
+                                    Cancel Booking
+                                </button>
+                            </form>
+                        {% endif %}
+
+                    </div>
+
+                </article>
+
+            {% endfor %}
+
+        {% else %}
+
+            <section class="empty-state">
+                <div class="empty-icon">📅</div>
+
+                <h3>No Bookings Yet</h3>
+
+                <p>
+                    You haven't booked a turf yet. Find a turf and reserve
+                    your preferred playing slot!
+                </p>
+
+                <a href="{% url 'turf_search' %}" class="btn btn-primary">
+                    Explore Turfs →
+                </a>
+            </section>
+
+        {% endif %}
+
+        <a href="{% url 'turf_search' %}" class="back-link">
+            ← Back to Turf Search
+        </a>
+
+    </main>
+
+    <footer class="footer">
+        <p>© {% now "Y" %} MY TURF. Find your game. Book your slot.</p>
+    </footer>
+
+</body>
+</html>

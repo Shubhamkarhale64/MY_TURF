@@ -1,0 +1,492 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Account | MY TURF</title>
+
+    <style>
+        :root {
+            --green: #14532d;
+            --dark: #092719;
+            --lime: #a3e635;
+            --white: #ffffff;
+            --text: #18251c;
+            --muted: #69776d;
+            --border: #dfe7e0;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            min-height: 100vh;
+            font-family: Arial, Helvetica, sans-serif;
+            color: var(--text);
+            background: #f3f7f3;
+            display: flex;
+            flex-direction: column;
+        }
+
+        a {
+            color: var(--green);
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .navbar {
+            height: 74px;
+            padding: 0 7%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: var(--white);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 11px;
+            color: var(--green);
+            font-size: 23px;
+            font-weight: 800;
+            letter-spacing: -.7px;
+        }
+
+        .brand-icon {
+            width: 42px;
+            height: 42px;
+            display: grid;
+            place-items: center;
+            border-radius: 12px;
+            background: var(--green);
+            color: var(--lime);
+            font-size: 22px;
+        }
+
+        .nav-link {
+            font-size: 14px;
+            font-weight: 700;
+        }
+
+        .main {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 38px 18px;
+        }
+
+        .register-layout {
+            width: 100%;
+            max-width: 970px;
+            display: grid;
+            grid-template-columns: .9fr 1.1fr;
+            overflow: hidden;
+            background: var(--white);
+            border-radius: 24px;
+            box-shadow: 0 18px 55px rgba(14, 50, 29, .10);
+        }
+
+        .welcome-panel {
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 42px 35px;
+            color: var(--white);
+            background:
+                radial-gradient(circle at 85% 12%, rgba(163,230,53,.2), transparent 32%),
+                linear-gradient(145deg, #1b6037, var(--dark));
+        }
+
+        .welcome-panel::after {
+            content: "";
+            position: absolute;
+            width: 250px;
+            height: 250px;
+            right: -100px;
+            bottom: -95px;
+            border: 1px solid rgba(255,255,255,.16);
+            border-radius: 50%;
+            box-shadow:
+                0 0 0 28px rgba(255,255,255,.035),
+                0 0 0 58px rgba(255,255,255,.025);
+        }
+
+        .eyebrow {
+            width: fit-content;
+            padding: 9px 12px;
+            border: 1px solid rgba(255,255,255,.23);
+            border-radius: 30px;
+            color: #d9f99d;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .welcome-content {
+            position: relative;
+            z-index: 1;
+            margin: 35px 0;
+        }
+
+        .welcome-content h1 {
+            margin-bottom: 17px;
+            font-size: clamp(30px, 3.3vw, 41px);
+            line-height: 1.15;
+            letter-spacing: -1.4px;
+        }
+
+        .welcome-content h1 span {
+            color: var(--lime);
+        }
+
+        .welcome-content p {
+            color: #d1e2d5;
+            font-size: 14px;
+            line-height: 1.8;
+        }
+
+        .benefits {
+            position: relative;
+            z-index: 1;
+            display: grid;
+            gap: 15px;
+            color: #e8f5eb;
+            font-size: 13px;
+        }
+
+        .benefit {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .check {
+            width: 22px;
+            height: 22px;
+            flex-shrink: 0;
+            display: grid;
+            place-items: center;
+            border-radius: 50%;
+            color: var(--dark);
+            background: var(--lime);
+            font-weight: 800;
+        }
+
+        .form-panel {
+            padding: 39px 42px;
+        }
+
+        .form-panel h2 {
+            margin-bottom: 9px;
+            color: var(--dark);
+            font-size: 29px;
+            letter-spacing: -.8px;
+        }
+
+        .subtitle {
+            margin-bottom: 24px;
+            color: var(--muted);
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .messages {
+            margin-bottom: 18px;
+        }
+
+        .message {
+            margin-bottom: 8px;
+            padding: 12px 13px;
+            border: 1px solid #fecaca;
+            border-radius: 9px;
+            background: #fff1f2;
+            color: #9f1239;
+            font-size: 13px;
+            line-height: 1.5;
+        }
+
+        .field {
+            margin-bottom: 15px;
+        }
+
+        .field label {
+            display: block;
+            margin-bottom: 7px;
+            color: #26362b;
+            font-size: 13px;
+            font-weight: 700;
+        }
+
+        .field input {
+            width: 100%;
+            height: 45px;
+            padding: 0 13px;
+            border: 1px solid #d9e2da;
+            border-radius: 9px;
+            outline: none;
+            background: #fbfdfb;
+            color: var(--text);
+            font-size: 14px;
+            transition: border-color .2s, box-shadow .2s;
+        }
+
+        .field input:focus {
+            border-color: #398253;
+            box-shadow: 0 0 0 3px rgba(57,130,83,.12);
+        }
+
+        .field input::placeholder {
+            color: #9aa69c;
+        }
+
+        .submit-btn {
+            width: 100%;
+            min-height: 49px;
+            margin-top: 6px;
+            border: none;
+            border-radius: 10px;
+            background: var(--green);
+            color: var(--white);
+            font-size: 15px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background .2s, transform .2s;
+        }
+
+        .submit-btn:hover {
+            background: #0f4225;
+            transform: translateY(-1px);
+        }
+
+        .links {
+            margin-top: 21px;
+            text-align: center;
+            color: var(--muted);
+            font-size: 13px;
+            line-height: 2;
+        }
+
+        .links a {
+            font-weight: 700;
+        }
+
+        .footer {
+            padding: 19px;
+            text-align: center;
+            color: #758178;
+            font-size: 12px;
+        }
+
+        @media (max-width: 760px) {
+            .navbar {
+                height: 68px;
+                padding: 0 5%;
+            }
+
+            .brand {
+                font-size: 20px;
+            }
+
+            .register-layout {
+                max-width: 480px;
+                grid-template-columns: 1fr;
+            }
+
+            .welcome-panel {
+                min-height: 240px;
+                padding: 27px;
+            }
+
+            .welcome-content {
+                margin: 25px 0;
+            }
+
+            .welcome-content h1 {
+                font-size: 32px;
+            }
+
+            .benefits {
+                gap: 10px;
+            }
+
+            .form-panel {
+                padding: 32px 27px;
+            }
+        }
+
+        @media (max-width: 360px) {
+            .main {
+                padding: 20px 12px;
+            }
+
+            .form-panel {
+                padding: 27px 19px;
+            }
+
+            .welcome-panel {
+                padding: 23px 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="navbar">
+        <a href="{% url 'home' %}" class="brand">
+            <span class="brand-icon">⚽</span>
+            <span>MY TURF</span>
+        </a>
+
+        <a href="{% url 'turf_search' %}" class="nav-link">
+            Explore Turfs →
+        </a>
+    </header>
+
+    <main class="main">
+        <div class="register-layout">
+
+            <section class="welcome-panel">
+                <div class="eyebrow">⚡ Join the game</div>
+
+                <div class="welcome-content">
+                    <h1>Create your account.<br><span>Play your game.</span></h1>
+                    <p>
+                        Join MY TURF to discover sports turfs,
+                        choose your preferred slots and keep
+                        your bookings organised in one place.
+                    </p>
+                </div>
+
+                <div class="benefits">
+                    <div class="benefit">
+                        <span class="check">✓</span>
+                        Find turfs that suit your game
+                    </div>
+                    <div class="benefit">
+                        <span class="check">✓</span>
+                        Book convenient time slots
+                    </div>
+                    <div class="benefit">
+                        <span class="check">✓</span>
+                        View and manage your bookings
+                    </div>
+                </div>
+            </section>
+
+            <section class="form-panel">
+                <h2>Create account</h2>
+                <p class="subtitle">
+                    Fill in your details to get started with MY TURF.
+                </p>
+
+                {% if messages %}
+                    <div class="messages">
+                        {% for message in messages %}
+                            <p class="message">{{ message }}</p>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+
+                <form method="POST">
+                    {% csrf_token %}
+
+                    <div class="field">
+                        <label for="name">Full Name</label>
+                        <input
+                            type="text"
+                            id="name"
+                            name="name"
+                            placeholder="Enter your full name"
+                            autocomplete="name"
+                            required
+                        >
+                    </div>
+
+                    <div class="field">
+                        <label for="email">Email Address</label>
+                        <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            placeholder="Enter your email address"
+                            autocomplete="email"
+                            required
+                        >
+                    </div>
+
+                    <div class="field">
+                        <label for="mobile">Mobile Number</label>
+                        <input
+                            type="tel"
+                            id="mobile"
+                            name="mobile"
+                            placeholder="Enter your 10-digit mobile number"
+                            pattern="[0-9]{10}"
+                            maxlength="10"
+                            inputmode="numeric"
+                            autocomplete="tel"
+                            required
+                        >
+                    </div>
+
+                    <div class="field">
+                        <label for="password">Password</label>
+                        <input
+                            type="password"
+                            id="password"
+                            name="password"
+                            placeholder="Create a password"
+                            autocomplete="new-password"
+                            required
+                        >
+                    </div>
+
+                    <div class="field">
+                        <label for="confirm_password">Confirm Password</label>
+                        <input
+                            type="password"
+                            id="confirm_password"
+                            name="confirm_password"
+                            placeholder="Re-enter your password"
+                            autocomplete="new-password"
+                            required
+                        >
+                    </div>
+
+                    <button type="submit" class="submit-btn">
+                        Create My Account →
+                    </button>
+                </form>
+
+                <div class="links">
+                    <p>
+                        Already have an account?
+                        <a href="{% url 'customer_login' %}">Login here</a>
+                    </p>
+                    <a href="{% url 'home' %}">← Back to Home</a>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <footer class="footer">
+        © MY TURF · Your game. Your ground. Your time.
+    </footer>
+
+</body>
+</html>

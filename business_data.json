@@ -1,0 +1,454 @@
+[
+{
+  "model": "auth.user",
+  "pk": 9,
+  "fields": {
+    "password": "pbkdf2_sha256$1500000$j68aKSyiTGvsNgeDk4ifHt$/xrQyW77//Q0llwIgtD+ufUbhaRck1L3wGkIdAIjOD0=",
+    "last_login": "2026-10-11T14:36:47.501Z",
+    "is_superuser": true,
+    "username": "shubham_patil",
+    "first_name": "",
+    "last_name": "",
+    "email": "karhaleshubham2@gmail.com",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2026-10-09T14:07:49.406Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 11,
+  "fields": {
+    "password": "pbkdf2_sha256$1500000$PigE1nC4vcygJLf2cOArcq$icQqYDuyzhF9GyXBrLNlsxAP31z1p3pf6kqWRdLfzQI=",
+    "last_login": "2026-10-13T12:17:56.269Z",
+    "is_superuser": false,
+    "username": "karhaleshubham307@gmail.com",
+    "first_name": "sachin_patil",
+    "last_name": "",
+    "email": "karhaleshubham307@gmail.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-10-09T14:58:36.621Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 12,
+  "fields": {
+    "password": "pbkdf2_sha256$1500000$OtslCwTfAmqKd9jxndlXTi$U3yN7S0Zd6B1HqgPo3yr5YdVcdmLPx9iHDy3PsBfGSk=",
+    "last_login": "2026-10-11T13:28:02.540Z",
+    "is_superuser": false,
+    "username": "rajdeoshubham2@gmail.com",
+    "first_name": "shubham Rajdeo",
+    "last_name": "",
+    "email": "rajdeoshubham2@gmail.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-10-11T13:28:01.791Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 13,
+  "fields": {
+    "password": "pbkdf2_sha256$1500000$BIkIa2q66A3f8YGetvQFkw$1JPncKBtAS542hdoe+onkfAGyHT3kY6P2LOj2+NQsd0=",
+    "last_login": "2026-10-13T12:20:10.841Z",
+    "is_superuser": false,
+    "username": "vishalshelke2@gmail.com",
+    "first_name": "vishal dnyandev shelke",
+    "last_name": "",
+    "email": "vishalshelke2@gmail.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-10-13T10:37:07.031Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "sportsapp.sport",
+  "pk": 1,
+  "fields": {
+    "name": "football",
+    "icon": "football",
+    "status": true,
+    "created_at": "2026-09-30T14:37:17.134Z"
+  }
+},
+{
+  "model": "sportsapp.sport",
+  "pk": 2,
+  "fields": {
+    "name": "Cricket",
+    "icon": "",
+    "status": true,
+    "created_at": "2026-09-30T14:37:52.897Z"
+  }
+},
+{
+  "model": "sportsapp.sport",
+  "pk": 3,
+  "fields": {
+    "name": "Tennis cricket",
+    "icon": "Tennis",
+    "status": true,
+    "created_at": "2026-10-10T01:00:49.446Z"
+  }
+},
+{
+  "model": "sportsapp.sport",
+  "pk": 4,
+  "fields": {
+    "name": "Box tennis cricket",
+    "icon": "box",
+    "status": true,
+    "created_at": "2026-10-10T01:01:24.442Z"
+  }
+},
+{
+  "model": "sportsapp.sport",
+  "pk": 5,
+  "fields": {
+    "name": "Box hockey",
+    "icon": "Hockyey",
+    "status": true,
+    "created_at": "2026-10-10T01:01:51.543Z"
+  }
+},
+{
+  "model": "sportsapp.sport",
+  "pk": 6,
+  "fields": {
+    "name": "Badminton",
+    "icon": "Bad minton",
+    "status": true,
+    "created_at": "2026-10-10T01:02:18.653Z"
+  }
+},
+{
+  "model": "turfapp.turfowner",
+  "pk": 4,
+  "fields": {
+    "user": 11,
+    "business_name": "Arena 7 sports",
+    "verification_status": "VERIFIED",
+    "created_at": "2026-10-09T14:58:37.970Z"
+  }
+},
+{
+  "model": "turfapp.turf",
+  "pk": 3,
+  "fields": {
+    "owner": 4,
+    "name": "shiva turf",
+    "image": "",
+    "description": "this playing turf",
+    "address": "warje pune",
+    "city": "pune",
+    "area": "warje area",
+    "latitude": null,
+    "longitude": null,
+    "ground_type": "grass",
+    "open_time": null,
+    "close_time": null,
+    "price_per_hour": "900.00",
+    "status": "APPROVED",
+    "rating": "0.00",
+    "created_at": "2026-10-09T15:07:22.699Z",
+    "updated_at": "2026-10-12T13:08:32.539Z"
+  }
+},
+{
+  "model": "turfapp.turf",
+  "pk": 4,
+  "fields": {
+    "owner": 4,
+    "name": "shivam turf",
+    "image": "turf_images/Turf_Booking_System_UML_Diagram.png",
+    "description": "for play your game",
+    "address": "sonai",
+    "city": "newasa",
+    "area": "landevadi",
+    "latitude": null,
+    "longitude": null,
+    "ground_type": "grass",
+    "open_time": "08:53:33",
+    "close_time": "12:00:00",
+    "price_per_hour": "799.72",
+    "status": "APPROVED",
+    "rating": "0.00",
+    "created_at": "2026-10-10T13:04:19.209Z",
+    "updated_at": "2026-10-10T13:24:54.682Z"
+  }
+},
+{
+  "model": "turfapp.turf",
+  "pk": 5,
+  "fields": {
+    "owner": 4,
+    "name": "mahakal turfs",
+    "image": "turf_images/Clean_Turf_Booking_ER_Diagram.png",
+    "description": "play the our games.",
+    "address": "lasur",
+    "city": "sambhajinagar",
+    "area": "gangapur",
+    "latitude": null,
+    "longitude": null,
+    "ground_type": "grass",
+    "open_time": null,
+    "close_time": null,
+    "price_per_hour": "1500.00",
+    "status": "APPROVED",
+    "rating": "0.00",
+    "created_at": "2026-10-11T14:33:53.998Z",
+    "updated_at": "2026-10-11T14:37:22.936Z"
+  }
+},
+{
+  "model": "turfapp.slot",
+  "pk": 11,
+  "fields": {
+    "turf": 4,
+    "date": "2026-10-18",
+    "start_time": "09:59:00",
+    "end_time": "10:59:00",
+    "price": "900.00",
+    "status": "AVAILABLE",
+    "created_at": "2026-10-11T03:29:20.274Z"
+  }
+},
+{
+  "model": "turfapp.slot",
+  "pk": 12,
+  "fields": {
+    "turf": 4,
+    "date": "2026-10-18",
+    "start_time": "20:05:00",
+    "end_time": "21:05:00",
+    "price": "1200.00",
+    "status": "AVAILABLE",
+    "created_at": "2026-10-11T13:33:24.858Z"
+  }
+},
+{
+  "model": "turfapp.slot",
+  "pk": 13,
+  "fields": {
+    "turf": 5,
+    "date": "2026-10-13",
+    "start_time": "09:59:00",
+    "end_time": "11:59:00",
+    "price": "1200.00",
+    "status": "AVAILABLE",
+    "created_at": "2026-10-12T03:29:19.249Z"
+  }
+},
+{
+  "model": "turfapp.slot",
+  "pk": 14,
+  "fields": {
+    "turf": 5,
+    "date": "2026-10-14",
+    "start_time": "01:00:00",
+    "end_time": "10:48:00",
+    "price": "1300.10",
+    "status": "AVAILABLE",
+    "created_at": "2026-10-13T12:18:45.462Z"
+  }
+},
+{
+  "model": "turfapp.turfsport",
+  "pk": 15,
+  "fields": {
+    "turf": 4,
+    "sport": 1
+  }
+},
+{
+  "model": "turfapp.turfsport",
+  "pk": 16,
+  "fields": {
+    "turf": 4,
+    "sport": 2
+  }
+},
+{
+  "model": "turfapp.turfsport",
+  "pk": 17,
+  "fields": {
+    "turf": 4,
+    "sport": 3
+  }
+},
+{
+  "model": "turfapp.turfsport",
+  "pk": 18,
+  "fields": {
+    "turf": 4,
+    "sport": 4
+  }
+},
+{
+  "model": "turfapp.turfsport",
+  "pk": 19,
+  "fields": {
+    "turf": 4,
+    "sport": 5
+  }
+},
+{
+  "model": "turfapp.turfsport",
+  "pk": 20,
+  "fields": {
+    "turf": 4,
+    "sport": 6
+  }
+},
+{
+  "model": "turfapp.turfsport",
+  "pk": 21,
+  "fields": {
+    "turf": 5,
+    "sport": 1
+  }
+},
+{
+  "model": "turfapp.turfsport",
+  "pk": 22,
+  "fields": {
+    "turf": 5,
+    "sport": 2
+  }
+},
+{
+  "model": "turfapp.turfsport",
+  "pk": 23,
+  "fields": {
+    "turf": 5,
+    "sport": 3
+  }
+},
+{
+  "model": "turfapp.turfsport",
+  "pk": 24,
+  "fields": {
+    "turf": 5,
+    "sport": 4
+  }
+},
+{
+  "model": "turfapp.turfsport",
+  "pk": 25,
+  "fields": {
+    "turf": 5,
+    "sport": 5
+  }
+},
+{
+  "model": "turfapp.turfsport",
+  "pk": 26,
+  "fields": {
+    "turf": 5,
+    "sport": 6
+  }
+},
+{
+  "model": "turfapp.turfsport",
+  "pk": 27,
+  "fields": {
+    "turf": 3,
+    "sport": 1
+  }
+},
+{
+  "model": "turfapp.turfsport",
+  "pk": 28,
+  "fields": {
+    "turf": 3,
+    "sport": 2
+  }
+},
+{
+  "model": "turfapp.turfsport",
+  "pk": 29,
+  "fields": {
+    "turf": 3,
+    "sport": 3
+  }
+},
+{
+  "model": "turfapp.turfsport",
+  "pk": 30,
+  "fields": {
+    "turf": 3,
+    "sport": 4
+  }
+},
+{
+  "model": "turfapp.turfsport",
+  "pk": 31,
+  "fields": {
+    "turf": 3,
+    "sport": 5
+  }
+},
+{
+  "model": "turfapp.turfsport",
+  "pk": 32,
+  "fields": {
+    "turf": 3,
+    "sport": 6
+  }
+},
+{
+  "model": "turfapp.booking",
+  "pk": 2,
+  "fields": {
+    "booking_code": "MT2026101203293213",
+    "user": 11,
+    "turf": 5,
+    "slot": 13,
+    "booking_date": "2026-10-12",
+    "amount": "1200.00",
+    "booking_status": "CANCELLED",
+    "payment_status": "SUCCESS",
+    "created_at": "2026-10-12T03:29:32.018Z"
+  }
+},
+{
+  "model": "turfapp.booking",
+  "pk": 3,
+  "fields": {
+    "booking_code": "MT2026101310380813",
+    "user": 13,
+    "turf": 5,
+    "slot": 13,
+    "booking_date": "2026-10-13",
+    "amount": "1200.00",
+    "booking_status": "PENDING",
+    "payment_status": "PENDING",
+    "created_at": "2026-10-13T10:38:08.382Z"
+  }
+},
+{
+  "model": "turfapp.booking",
+  "pk": 4,
+  "fields": {
+    "booking_code": "MT2026101312202514",
+    "user": 13,
+    "turf": 5,
+    "slot": 14,
+    "booking_date": "2026-10-14",
+    "amount": "1300.10",
+    "booking_status": "CANCELLED",
+    "payment_status": "SUCCESS",
+    "created_at": "2026-10-13T12:20:25.634Z"
+  }
+}
+]

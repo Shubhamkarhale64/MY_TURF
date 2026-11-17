@@ -1,0 +1,724 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>{{ turf.name }} | MY TURF</title>
+
+    <style>
+        :root {
+            --green: #b9f36b;
+            --green-dark: #91ce46;
+            --dark: #09130e;
+            --panel: #12251b;
+            --panel-light: #192f23;
+            --white: #f6f8f4;
+            --muted: #a8b8ad;
+            --border: #2b4233;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background: var(--dark);
+            color: var(--white);
+            font-family: Arial, Helvetica, sans-serif;
+            line-height: 1.7;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        button,
+        input {
+            font: inherit;
+        }
+
+        .container {
+            width: min(1100px, calc(100% - 36px));
+            margin: auto;
+        }
+
+        /* NAVBAR */
+
+        .navbar {
+            border-bottom: 1px solid var(--border);
+            background: #09130ef5;
+        }
+
+        .nav-inner {
+            min-height: 76px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            padding-top: 12px;
+            padding-bottom: 12px;
+        }
+
+        .logo {
+            font-size: 26px;
+            font-weight: 800;
+            letter-spacing: -1px;
+        }
+
+        .logo span,
+        .green {
+            color: var(--green);
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        .nav-links a {
+            color: #dce6de;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .nav-links a:hover,
+        .back-link:hover {
+            color: var(--green);
+        }
+
+        /* BREADCRUMB */
+
+        .breadcrumb {
+            padding-top: 27px;
+            color: var(--muted);
+            font-size: 13px;
+        }
+
+        .breadcrumb a:hover {
+            color: var(--green);
+        }
+
+        /* MAIN TURF INFORMATION */
+
+        .turf-layout {
+            display: grid;
+            grid-template-columns: minmax(0, 1.2fr) minmax(300px, .8fr);
+            align-items: start;
+            gap: 28px;
+            padding-top: 25px;
+            padding-bottom: 65px;
+        }
+
+        .main-column {
+            min-width: 0;
+        }
+
+        .turf-image {
+            height: 340px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            background:
+                radial-gradient(ellipse at center, #326844, #12251b);
+        }
+
+        .turf-image img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .image-placeholder {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: var(--green);
+        }
+
+        .image-placeholder span {
+            font-size: 65px;
+        }
+
+        .image-placeholder p {
+            color: var(--muted);
+            font-size: 14px;
+        }
+
+        .turf-heading {
+            padding: 25px 0;
+        }
+
+        .eyebrow {
+            color: var(--green);
+            font-size: 12px;
+            font-weight: 800;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+        }
+
+        .turf-heading h1 {
+            margin: 8px 0;
+            font-size: clamp(30px, 4vw, 43px);
+            line-height: 1.2;
+            overflow-wrap: anywhere;
+        }
+
+        .location {
+            color: var(--muted);
+            overflow-wrap: anywhere;
+        }
+
+        .status {
+            display: inline-block;
+            margin-top: 12px;
+            padding: 5px 11px;
+            border: 1px solid #6b8e48;
+            border-radius: 20px;
+            background: #b9f36b14;
+            color: var(--green);
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        /* INFORMATION CARDS */
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 15px;
+            margin-bottom: 22px;
+        }
+
+        .info-card {
+            padding: 19px;
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            background: var(--panel);
+            min-width: 0;
+        }
+
+        .info-label {
+            color: var(--muted);
+            font-size: 13px;
+        }
+
+        .info-value {
+            margin-top: 4px;
+            font-size: 17px;
+            font-weight: 700;
+            overflow-wrap: anywhere;
+        }
+
+        .section-card {
+            margin-top: 18px;
+            padding: 24px;
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            background: var(--panel);
+        }
+
+        .section-card h2 {
+            margin-bottom: 13px;
+            font-size: 21px;
+        }
+
+        .section-card p {
+            color: #d4dfd6;
+            overflow-wrap: anywhere;
+        }
+
+        .sports-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            list-style: none;
+        }
+
+        .sports-list li {
+            padding: 7px 12px;
+            border: 1px solid #425a45;
+            border-radius: 9px;
+            background: #b9f36b0c;
+            color: var(--green);
+            font-size: 13px;
+        }
+
+        .hours-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 14px;
+        }
+
+        .hours-item {
+            padding: 13px;
+            border-radius: 10px;
+            background: var(--panel-light);
+        }
+
+        .hours-item span {
+            display: block;
+            color: var(--muted);
+            font-size: 12px;
+        }
+
+        .hours-item strong {
+            display: block;
+            margin-top: 3px;
+        }
+
+        /* BOOKING PANEL */
+
+        .booking-panel {
+            position: sticky;
+            top: 20px;
+            padding: 26px;
+            border: 1px solid #496543;
+            border-radius: 19px;
+            background: linear-gradient(
+                145deg,
+                #192f23,
+                #102017
+            );
+        }
+
+        .booking-panel h2 {
+            font-size: 24px;
+            line-height: 1.3;
+        }
+
+        .booking-subtitle {
+            margin-top: 7px;
+            color: var(--muted);
+            font-size: 14px;
+        }
+
+        .booking-price {
+            margin: 22px 0;
+            padding: 17px 0;
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .booking-price span {
+            color: var(--muted);
+            font-size: 13px;
+        }
+
+        .booking-price strong {
+            display: block;
+            color: var(--green);
+            font-size: 32px;
+            line-height: 1.4;
+        }
+
+        .booking-price small {
+            color: var(--muted);
+            font-size: 13px;
+            font-weight: 400;
+        }
+
+        .date-label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 14px;
+            font-weight: 700;
+        }
+
+        .date-input {
+            width: 100%;
+            min-height: 48px;
+            padding: 11px;
+            border: 1px solid #415844;
+            border-radius: 9px;
+            outline: none;
+            background: #09130e;
+            color: var(--white);
+            color-scheme: dark;
+        }
+
+        .date-input:focus {
+            border-color: var(--green);
+            box-shadow: 0 0 0 3px #b9f36b18;
+        }
+
+        .primary-button {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            min-height: 49px;
+            margin-top: 17px;
+            padding: 12px 16px;
+            border: none;
+            border-radius: 10px;
+            background: var(--green);
+            color: #102015;
+            font-weight: 800;
+            cursor: pointer;
+            transition: background .2s, transform .2s;
+        }
+
+        .primary-button:hover {
+            background: var(--green-dark);
+            transform: translateY(-2px);
+        }
+
+        .booking-note {
+            margin-top: 15px;
+            color: var(--muted);
+            font-size: 12px;
+            text-align: center;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 23px;
+            color: #dce6de;
+            font-size: 14px;
+            font-weight: 700;
+        }
+
+        .messages {
+            padding-top: 18px;
+        }
+
+        .message {
+            margin-bottom: 10px;
+            padding: 12px 15px;
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            background: var(--panel);
+        }
+
+        footer {
+            padding: 25px 0;
+            border-top: 1px solid var(--border);
+            color: var(--muted);
+            text-align: center;
+            font-size: 13px;
+        }
+
+        footer strong {
+            color: var(--green);
+        }
+
+        /* RESPONSIVE */
+
+        @media (max-width: 800px) {
+            .turf-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .booking-panel {
+                position: static;
+            }
+
+            .turf-image {
+                height: 300px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                width: calc(100% - 28px);
+            }
+
+            .nav-inner {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+
+            .nav-links {
+                gap: 10px 14px;
+            }
+
+            .nav-links a {
+                font-size: 13px;
+            }
+
+            .turf-image {
+                height: 225px;
+            }
+
+            .info-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 10px;
+            }
+
+            .info-card {
+                padding: 13px;
+            }
+
+            .info-value {
+                font-size: 15px;
+            }
+
+            .section-card,
+            .booking-panel {
+                padding: 19px;
+            }
+
+            .hours-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVIGATION -->
+    <header class="navbar">
+        <div class="container nav-inner">
+
+            <a class="logo" href="{% url 'home' %}">
+                MY <span>TURF</span> ⚽
+            </a>
+
+            <nav class="nav-links">
+                <a href="{% url 'home' %}">Home</a>
+                <a href="{% url 'turf_search' %}">Find Turfs</a>
+
+                {% if user.is_authenticated %}
+                    <a href="{% url 'my_bookings' %}">My Bookings</a>
+                    <a href="{% url 'customer_profile' %}">My Profile</a>
+                    <a href="{% url 'customer_logout' %}">Logout</a>
+                {% else %}
+                    <a href="{% url 'customer_login' %}">Customer Login</a>
+                    <a href="{% url 'customer_register' %}">Register</a>
+                {% endif %}
+            </nav>
+
+        </div>
+    </header>
+
+    <main class="container">
+
+        <!-- DJANGO MESSAGES -->
+        {% if messages %}
+            <div class="messages">
+                {% for message in messages %}
+                    <div class="message">{{ message }}</div>
+                {% endfor %}
+            </div>
+        {% endif %}
+
+        <!-- BREADCRUMB -->
+        <div class="breadcrumb">
+            <a href="{% url 'home' %}">Home</a>
+            &nbsp; / &nbsp;
+            <a href="{% url 'turf_search' %}">Find Turfs</a>
+            &nbsp; / &nbsp;
+            {{ turf.name }}
+        </div>
+
+        <section class="turf-layout">
+
+            <!-- LEFT: TURF DETAILS -->
+            <div class="main-column">
+
+                <div class="turf-image">
+                    {% if turf.image %}
+                        <img
+                            src="{{ turf.image.url }}"
+                            alt="{{ turf.name }}"
+                        >
+                    {% else %}
+                        <div class="image-placeholder">
+                            <span aria-hidden="true">🏟️</span>
+                            <p>Turf image not available</p>
+                        </div>
+                    {% endif %}
+                </div>
+
+                <div class="turf-heading">
+                    <p class="eyebrow">Discover your next game</p>
+
+                    <h1>{{ turf.name }}</h1>
+
+                    <p class="location">
+                        📍 {{ turf.area }}{% if turf.area and turf.city %}, {% endif %}{{ turf.city }}
+                    </p>
+
+                    {% if turf.status == "APPROVED" %}
+                        <span class="status">✓ Approved Turf</span>
+                    {% endif %}
+                </div>
+
+                <!-- QUICK INFORMATION -->
+                <div class="info-grid">
+
+                    <div class="info-card">
+                        <div class="info-label">Hourly Price</div>
+                        <div class="info-value green">
+                            ₹{{ turf.price_per_hour|floatformat:2 }}
+                        </div>
+                    </div>
+
+                    <div class="info-card">
+                        <div class="info-label">Customer Rating</div>
+                        <div class="info-value">
+                            ⭐ {{ turf.rating|default:"0.0" }} / 5
+                        </div>
+                    </div>
+
+                    <div class="info-card">
+                        <div class="info-label">Ground Type</div>
+                        <div class="info-value">
+                            {{ turf.ground_type|default:"Not specified" }}
+                        </div>
+                    </div>
+
+                    <div class="info-card">
+                        <div class="info-label">City</div>
+                        <div class="info-value">
+                            {{ turf.city|default:"Not specified" }}
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- DESCRIPTION -->
+                <div class="section-card">
+                    <h2>About This Turf</h2>
+
+                    <p>
+                        {{ turf.description|default:"No description has been added for this turf yet." }}
+                    </p>
+                </div>
+
+                <!-- ADDRESS -->
+                <div class="section-card">
+                    <h2>Location & Address</h2>
+
+                    <p>
+                        <strong>Address:</strong>
+                        {{ turf.address|default:"Address not specified" }}
+                    </p>
+
+                    <p>
+                        <strong>Area:</strong>
+                        {{ turf.area|default:"Not specified" }}
+                    </p>
+
+                    <p>
+                        <strong>City:</strong>
+                        {{ turf.city|default:"Not specified" }}
+                    </p>
+                </div>
+
+                <!-- SPORTS -->
+                <div class="section-card">
+                    <h2>Available Sports</h2>
+
+                    <ul class="sports-list">
+                        {% for turf_sport in turf.turf_sports.all %}
+                            <li>{{ turf_sport.sport.name }}</li>
+                        {% empty %}
+                            <li>No sports added yet</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+
+                <!-- OPENING HOURS -->
+                <div class="section-card">
+                    <h2>Opening Hours</h2>
+
+                    <div class="hours-grid">
+                        <div class="hours-item">
+                            <span>Opening Time</span>
+                            <strong>
+                                {{ turf.open_time|default:"Not specified" }}
+                            </strong>
+                        </div>
+
+                        <div class="hours-item">
+                            <span>Closing Time</span>
+                            <strong>
+                                {{ turf.close_time|default:"Not specified" }}
+                            </strong>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- RIGHT: BOOKING PANEL -->
+            <aside class="booking-panel">
+
+                <p class="eyebrow">Reserve your game</p>
+
+                <h2>Book This Turf</h2>
+
+                <p class="booking-subtitle">
+                    Select your preferred date to view available slots.
+                </p>
+
+                <div class="booking-price">
+                    <span>Price per hour</span>
+
+                    <strong>
+                        ₹{{ turf.price_per_hour|floatformat:2 }}
+                    </strong>
+                    <small>Final booking amount depends on the selected slot.</small>
+                </div>
+
+                <form
+                    method="GET"
+                    action="{% url 'turf_slots' turf.id %}"
+                >
+                    <label class="date-label" for="booking-date">
+                        Select Booking Date
+                    </label>
+
+                    <input
+                        class="date-input"
+                        id="booking-date"
+                        type="date"
+                        name="date"
+                        min="{% now 'Y-m-d' %}"
+                        required
+                    >
+
+                    <button class="primary-button" type="submit">
+                        View Available Slots &nbsp; →
+                    </button>
+                </form>
+
+                <p class="booking-note">
+                    Choose a date to check the slots available for booking.
+                </p>
+
+                <a class="back-link" href="{% url 'turf_search' %}">
+                    ← Back to All Turfs
+                </a>
+
+            </aside>
+
+        </section>
+
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>
+                © {% now "Y" %} <strong>MY TURF</strong>
+                | Turf Booking &amp; Management System
+            </p>
+            <p>Academic Project</p>
+        </div>
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,582 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Available Slots - MY TURF</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --green: #16a34a;
+            --dark-green: #14532d;
+            --background: #f5f8f5;
+            --text: #17251b;
+            --muted: #647067;
+            --border: #e1e9e2;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: var(--background);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .navbar {
+            background: #102c1c;
+            color: white;
+            padding: 17px 6%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .logo {
+            font-size: 25px;
+            font-weight: 800;
+            color: #86efac;
+            letter-spacing: 1px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .nav-links a {
+            color: #e5f4e8;
+            font-size: 14px;
+        }
+
+        .nav-links a:hover {
+            color: #86efac;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #14532d, #166534);
+            color: white;
+            padding: 42px 6%;
+        }
+
+        .hero .eyebrow {
+            color: #bbf7d0;
+            font-size: 13px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+
+        .hero h1 {
+            font-size: clamp(27px, 4vw, 40px);
+            line-height: 1.2;
+            margin: 10px 0;
+        }
+
+        .hero p {
+            color: #e1f5e6;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 30px 20px 55px;
+        }
+
+        .breadcrumb {
+            font-size: 14px;
+            color: var(--muted);
+            margin-bottom: 22px;
+        }
+
+        .breadcrumb a {
+            color: var(--dark-green);
+            font-weight: bold;
+        }
+
+        .location-card {
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 15px;
+            padding: 20px 22px;
+            margin-bottom: 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .location-card h2 {
+            font-size: 20px;
+            margin-bottom: 4px;
+        }
+
+        .location-card p {
+            color: var(--muted);
+            font-size: 14px;
+        }
+
+        .location-icon {
+            background: #dcfce7;
+            color: #166534;
+            border-radius: 12px;
+            padding: 13px;
+            font-size: 25px;
+        }
+
+        .section-title {
+            font-size: 23px;
+            margin-bottom: 5px;
+        }
+
+        .section-description {
+            color: var(--muted);
+            margin-bottom: 20px;
+            font-size: 14px;
+        }
+
+        .filter-card {
+            background: white;
+            padding: 22px;
+            border-radius: 15px;
+            border: 1px solid var(--border);
+            margin-bottom: 32px;
+        }
+
+        .filter-card label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 9px;
+            font-size: 14px;
+        }
+
+        .filter-row {
+            display: flex;
+            align-items: end;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .date-field {
+            flex: 1;
+            min-width: 220px;
+        }
+
+        input[type="date"] {
+            width: 100%;
+            min-height: 46px;
+            padding: 10px 12px;
+            border: 1px solid #cbd5ce;
+            border-radius: 9px;
+            font-size: 15px;
+            font-family: inherit;
+            background: white;
+        }
+
+        button, .btn {
+            border: none;
+            border-radius: 9px;
+            padding: 12px 19px;
+            min-height: 44px;
+            font-size: 14px;
+            font-weight: bold;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            transition: 0.2s;
+            font-family: inherit;
+        }
+
+        .btn-primary {
+            background: var(--green);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #15803d;
+        }
+
+        .slots-heading {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-bottom: 18px;
+        }
+
+        .slot-count {
+            background: #dcfce7;
+            color: #166534;
+            padding: 6px 12px;
+            border-radius: 30px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .slot-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 18px;
+        }
+
+        .slot-card {
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 15px;
+            padding: 22px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .slot-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(20, 83, 45, 0.08);
+        }
+
+        .slot-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            gap: 10px;
+            margin-bottom: 18px;
+        }
+
+        .slot-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #dcfce7;
+            font-size: 22px;
+        }
+
+        .status {
+            font-size: 11px;
+            font-weight: bold;
+            padding: 5px 9px;
+            border-radius: 30px;
+            background: #dcfce7;
+            color: #166534;
+        }
+
+        .slot-time-label {
+            color: var(--muted);
+            font-size: 12px;
+            margin-bottom: 3px;
+        }
+
+        .slot-time {
+            font-size: 19px;
+            font-weight: bold;
+            margin-bottom: 17px;
+        }
+
+        .slot-price {
+            border-top: 1px solid var(--border);
+            padding-top: 15px;
+            margin-bottom: 17px;
+            display: flex;
+            align-items: baseline;
+            gap: 4px;
+        }
+
+        .price-amount {
+            font-size: 27px;
+            font-weight: 800;
+            color: var(--dark-green);
+        }
+
+        .price-unit {
+            color: var(--muted);
+            font-size: 12px;
+        }
+
+        .book-form {
+            width: 100%;
+        }
+
+        .book-button {
+            width: 100%;
+        }
+
+        .empty-state {
+            background: white;
+            border: 1px dashed #cbd5ce;
+            border-radius: 15px;
+            text-align: center;
+            padding: 45px 20px;
+        }
+
+        .empty-icon {
+            font-size: 42px;
+            margin-bottom: 12px;
+        }
+
+        .empty-state h3 {
+            font-size: 20px;
+            margin-bottom: 8px;
+        }
+
+        .empty-state p {
+            color: var(--muted);
+            margin-bottom: 18px;
+        }
+
+        .btn-outline {
+            border: 1px solid #bbd5c1;
+            background: white;
+            color: var(--dark-green);
+        }
+
+        .btn-outline:hover {
+            background: #f0fdf4;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 30px;
+            color: var(--dark-green);
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        .footer {
+            background: #102c1c;
+            color: #cbd5ce;
+            padding: 24px 6%;
+            text-align: center;
+            font-size: 13px;
+        }
+
+        @media (max-width: 850px) {
+            .slot-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+
+        @media (max-width: 560px) {
+            .navbar {
+                padding: 15px 5%;
+            }
+
+            .nav-links {
+                gap: 12px;
+            }
+
+            .hero {
+                padding: 32px 5%;
+            }
+
+            .container {
+                padding: 23px 15px 40px;
+            }
+
+            .slot-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .filter-row {
+                align-items: stretch;
+            }
+
+            .date-field {
+                min-width: 100%;
+            }
+
+            .filter-row button {
+                width: 100%;
+            }
+
+            .location-card {
+                padding: 17px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <a href="{% url 'home' %}" class="logo">⚽ MY TURF</a>
+
+        <div class="nav-links">
+            <a href="{% url 'home' %}">Home</a>
+            <a href="{% url 'turf_search' %}">Find Turfs</a>
+
+            {% if user.is_authenticated %}
+                <a href="{% url 'my_bookings' %}">My Bookings</a>
+                <a href="{% url 'customer_profile' %}">My Profile</a>
+            {% else %}
+                <a href="{% url 'customer_login' %}">Login</a>
+            {% endif %}
+        </div>
+    </nav>
+
+    <section class="hero">
+        <p class="eyebrow">Your game starts here</p>
+        <h1>Choose Your Playing Slot</h1>
+        <p>Select your preferred date and find a time that works for your game.</p>
+    </section>
+
+    <main class="container">
+
+        <div class="breadcrumb">
+            <a href="{% url 'home' %}">Home</a>
+            &nbsp; / &nbsp;
+            <a href="{% url 'turf_search' %}">Find Turfs</a>
+            &nbsp; / &nbsp;
+            <a href="{% url 'turf_detail' turf.id %}">Turf Details</a>
+            &nbsp; / &nbsp;
+            Available Slots
+        </div>
+
+        <section class="location-card">
+            <div>
+                <h2>{{ turf.name }}</h2>
+                <p>📍 {{ turf.area }}, {{ turf.city }}</p>
+            </div>
+
+            <div class="location-icon">⚽</div>
+        </section>
+
+        <section>
+            <h2 class="section-title">Select Your Date</h2>
+            <p class="section-description">
+                Choose a date to check the available playing slots.
+            </p>
+
+            <div class="filter-card">
+                <form method="GET" action="{% url 'turf_slots' turf.id %}">
+                    <div class="filter-row">
+                        <div class="date-field">
+                            <label for="booking-date">Booking Date</label>
+                            <input
+                                type="date"
+                                id="booking-date"
+                                name="date"
+                                value="{{ selected_date }}"
+                                min="{% now 'Y-m-d' %}"
+                                required
+                            >
+                        </div>
+
+                        <button type="submit" class="btn-primary">
+                            View Slots →
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </section>
+
+        <section>
+            <div class="slots-heading">
+                <div>
+                    <h2 class="section-title">Available Slots</h2>
+                    <p class="section-description" style="margin-bottom: 0;">
+                        Select a slot to continue with your booking.
+                    </p>
+                </div>
+
+                {% if slots %}
+                    <span class="slot-count">
+                        {{ slots|length }} slot{{ slots|length|pluralize }} found
+                    </span>
+                {% endif %}
+            </div>
+
+            {% if slots %}
+                <div class="slot-grid">
+
+                    {% for slot in slots %}
+                        <article class="slot-card">
+
+                            <div class="slot-top">
+                                <div class="slot-icon">🕒</div>
+                                <span class="status">{{ slot.status }}</span>
+                            </div>
+
+                            <p class="slot-time-label">PLAYING TIME</p>
+
+                            <h3 class="slot-time">
+                                {{ slot.start_time|time:"h:i A" }}
+                                – {{ slot.end_time|time:"h:i A" }}
+                            </h3>
+
+                            <div class="slot-price">
+                                <span class="price-amount">₹{{ slot.price }}</span>
+                                <span class="price-unit">/ slot</span>
+                            </div>
+
+                            <form
+                                method="POST"
+                                action="{% url 'book_slot' slot.id %}"
+                                class="book-form"
+                            >
+                                {% csrf_token %}
+
+                                <button
+                                    type="submit"
+                                    class="btn-primary book-button"
+                                >
+                                    Book Now →
+                                </button>
+                            </form>
+
+                        </article>
+                    {% endfor %}
+
+                </div>
+
+            {% else %}
+                <div class="empty-state">
+                    <div class="empty-icon">📅</div>
+
+                    <h3>No Available Slots</h3>
+
+                    <p>
+                        There are no available slots for this date.
+                        Please select another date and try again.
+                    </p>
+
+                    <button
+                        type="button"
+                        class="btn-outline"
+                        onclick="document.getElementById('booking-date').focus()"
+                    >
+                        Choose Another Date
+                    </button>
+                </div>
+            {% endif %}
+        </section>
+
+        <a href="{% url 'turf_detail' turf.id %}" class="back-link">
+            ← Back to Turf Details
+        </a>
+
+    </main>
+
+    <footer class="footer">
+        <p>© {% now "Y" %} MY TURF. Find your game. Book your slot.</p>
+    </footer>
+
+</body>
+</html>

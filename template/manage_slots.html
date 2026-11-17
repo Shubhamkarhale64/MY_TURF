@@ -1,0 +1,542 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Slots | MY TURF</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f4f7f5;
+            color: #1c3024;
+        }
+
+        header {
+            background: #10291d;
+            color: white;
+            padding: 20px 6%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 14px;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 25px;
+            letter-spacing: 1px;
+        }
+
+        header h1 span {
+            color: #8be0a4;
+        }
+
+        header a {
+            color: white;
+            text-decoration: none;
+            border: 1px solid #ffffff60;
+            padding: 11px 16px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        header a:hover {
+            background: #ffffff15;
+        }
+
+        .container {
+            width: 92%;
+            max-width: 1250px;
+            margin: 36px auto;
+        }
+
+        .page-heading {
+            margin-bottom: 27px;
+        }
+
+        .eyebrow {
+            color: #197542;
+            font-size: 12px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .page-heading h2 {
+            margin: 10px 0;
+            font-size: 32px;
+            color: #10291d;
+        }
+
+        .page-heading p {
+            color: #718076;
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        .card {
+            background: white;
+            border-radius: 16px;
+            padding: 28px;
+            margin-bottom: 26px;
+            border: 1px solid #e0e9e2;
+            box-shadow: 0 8px 28px #10291d08;
+        }
+
+        .card-heading {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 24px;
+        }
+
+        .card h3 {
+            margin: 0;
+            color: #173c27;
+            font-size: 21px;
+        }
+
+        .card-subtitle {
+            color: #829087;
+            font-size: 13px;
+            margin-top: 7px;
+        }
+
+        .section-label {
+            color: #247646;
+            font-size: 12px;
+            font-weight: 800;
+            letter-spacing: 1.4px;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+
+        .message {
+            padding: 14px 17px;
+            margin-bottom: 12px;
+            border-radius: 9px;
+            background: #e7f7eb;
+            border: 1px solid #c8e9d0;
+            color: #176534;
+            font-size: 14px;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 22px;
+        }
+
+        .field {
+            display: flex;
+            flex-direction: column;
+            gap: 9px;
+        }
+
+        .field label {
+            font-weight: 700;
+            font-size: 14px;
+            color: #344b3b;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 13px 14px;
+            border: 1px solid #d5e0d7;
+            border-radius: 9px;
+            font-size: 15px;
+            color: #203428;
+            background: #fbfdfb;
+        }
+
+        input:focus, select:focus {
+            outline: none;
+            border-color: #24834a;
+            box-shadow: 0 0 0 3px #24834a18;
+        }
+
+        .submit-row {
+            margin-top: 25px;
+        }
+
+        button, .btn {
+            display: inline-block;
+            padding: 12px 18px;
+            border: none;
+            border-radius: 8px;
+            background: #176b3a;
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        button:hover, .btn:hover {
+            background: #10532d;
+        }
+
+        .table-wrap {
+            overflow-x: auto;
+            border: 1px solid #e4ebe5;
+            border-radius: 10px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 760px;
+        }
+
+        th, td {
+            padding: 16px 14px;
+            border-bottom: 1px solid #e9eee9;
+            text-align: left;
+            font-size: 14px;
+        }
+
+        th {
+            background: #f0f6f1;
+            color: #355441;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+        tbody tr:hover {
+            background: #fbfdfb;
+        }
+
+        .status {
+            display: inline-block;
+            padding: 6px 10px;
+            border-radius: 20px;
+            background: #e7f7eb;
+            color: #176534;
+            font-size: 11px;
+            font-weight: 800;
+            white-space: nowrap;
+        }
+
+        .actions {
+            white-space: nowrap;
+        }
+
+        .edit-btn {
+            background: #2563eb;
+            margin-right: 5px;
+            padding: 9px 12px;
+            font-size: 12px;
+        }
+
+        .edit-btn:hover {
+            background: #1d4ed8;
+        }
+
+        .delete-btn {
+            background: #dc2626;
+            padding: 9px 12px;
+            font-size: 12px;
+        }
+
+        .delete-btn:hover {
+            background: #b91c1c;
+        }
+
+        .actions form {
+            display: inline;
+        }
+
+        .muted {
+            color: #849087;
+            font-size: 13px;
+        }
+
+        .empty {
+            padding: 30px 18px;
+            text-align: center;
+            background: #f7faf7;
+            border: 1px dashed #d6e2d8;
+            border-radius: 11px;
+            color: #728076;
+            line-height: 1.7;
+        }
+
+        .empty p {
+            margin: 7px 0 15px;
+        }
+
+        .turf-list {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 15px;
+        }
+
+        .turf-item {
+            padding: 19px;
+            border: 1px solid #e0e9e2;
+            border-radius: 11px;
+            background: #fbfdfb;
+        }
+
+        .turf-item strong {
+            color: #183d29;
+            font-size: 16px;
+        }
+
+        .turf-item p {
+            margin: 9px 0;
+            line-height: 1.5;
+        }
+
+        .approval {
+            display: inline-block;
+            background: #edf2ee;
+            color: #395342;
+            border-radius: 6px;
+            padding: 6px 9px;
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        footer {
+            text-align: center;
+            padding: 25px 15px;
+            color: #829087;
+            font-size: 13px;
+        }
+
+        @media (max-width: 700px) {
+            header {
+                padding: 18px 5%;
+            }
+
+            .container {
+                width: 94%;
+                margin: 25px auto;
+            }
+
+            .page-heading h2 {
+                font-size: 27px;
+            }
+
+            .card {
+                padding: 20px 16px;
+                border-radius: 12px;
+            }
+
+            .form-grid, .turf-list {
+                grid-template-columns: 1fr;
+            }
+
+            .card-heading {
+                align-items: flex-start;
+            }
+
+            .submit-row .btn,
+            .submit-row button {
+                width: 100%;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>MY <span>TURF</span></h1>
+    <a href="{% url 'owner_dashboard' %}">← Dashboard</a>
+</header>
+
+<main class="container">
+
+    <div class="page-heading">
+        <div class="eyebrow">Owner Dashboard</div>
+        <h2>Manage Slots</h2>
+        <p>Create booking slots, manage availability and control your turf schedule.</p>
+    </div>
+
+    {% if messages %}
+        {% for message in messages %}
+            <div class="message">{{ message }}</div>
+        {% endfor %}
+    {% endif %}
+
+    <section class="card">
+        <div class="card-heading">
+            <div>
+                <div class="section-label">Slot Management</div>
+                <h3>＋ Add New Slot</h3>
+                <div class="card-subtitle">Set the date, timing and price for your slot.</div>
+            </div>
+        </div>
+
+        {% if turfs %}
+        <form method="POST">
+            {% csrf_token %}
+
+            <div class="form-grid">
+                <div class="field">
+                    <label for="turf">Select Turf *</label>
+                    <select name="turf" id="turf" required>
+                        <option value="">-- Select Turf --</option>
+                        {% for turf in turfs %}
+                            <option value="{{ turf.id }}">
+                                {{ turf.name }} - {{ turf.city }}
+                            </option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <div class="field">
+                    <label for="date">Slot Date *</label>
+                    <input type="date" name="date" id="date"
+                           min="{% now 'Y-m-d' %}" required>
+                </div>
+
+                <div class="field">
+                    <label for="start_time">Start Time *</label>
+                    <input type="time" name="start_time"
+                           id="start_time" required>
+                </div>
+
+                <div class="field">
+                    <label for="end_time">End Time *</label>
+                    <input type="time" name="end_time"
+                           id="end_time" required>
+                </div>
+
+                <div class="field">
+                    <label for="price">Slot Price (₹) *</label>
+                    <input type="number" name="price" id="price"
+                           min="0.01" step="0.01"
+                           placeholder="e.g. 1200" required>
+                </div>
+            </div>
+
+            <div class="submit-row">
+                <button type="submit">＋ Add Slot</button>
+            </div>
+        </form>
+        {% else %}
+            <div class="empty">
+                <strong>No turfs found in your account.</strong>
+                <p>Add a turf before creating booking slots.</p>
+                <a class="btn" href="{% url 'add_turf' %}">Add Turf</a>
+            </div>
+        {% endif %}
+    </section>
+
+    <section class="card">
+        <div class="card-heading">
+            <div>
+                <div class="section-label">Your Schedule</div>
+                <h3>My Slots</h3>
+                <div class="card-subtitle">View and manage your existing slots.</div>
+            </div>
+        </div>
+
+        {% if slots %}
+        <div class="table-wrap">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Turf</th>
+                        <th>Date</th>
+                        <th>Start Time</th>
+                        <th>End Time</th>
+                        <th>Price</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    {% for slot in slots %}
+                    <tr>
+                        <td><strong>{{ slot.turf.name }}</strong></td>
+                        <td>{{ slot.date|date:"d M Y" }}</td>
+                        <td>{{ slot.start_time|time:"h:i A" }}</td>
+                        <td>{{ slot.end_time|time:"h:i A" }}</td>
+                        <td><strong>₹{{ slot.price }}</strong></td>
+                        <td><span class="status">{{ slot.status }}</span></td>
+                        <td class="actions">
+                            {% if slot.status == "AVAILABLE" %}
+                                <a class="btn edit-btn"
+                                   href="{% url 'edit_slot' slot.id %}">Edit</a>
+
+                                <form method="POST"
+                                      action="{% url 'delete_slot' slot.id %}"
+                                      onsubmit="return confirm('Delete this slot?');">
+                                    {% csrf_token %}
+                                    <button class="delete-btn" type="submit">
+                                        Delete
+                                    </button>
+                                </form>
+                            {% else %}
+                                <span class="muted">Not editable</span>
+                            {% endif %}
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        {% else %}
+            <div class="empty">
+                <strong>No slots created yet.</strong>
+                <p>Use the form above to add your first booking slot.</p>
+            </div>
+        {% endif %}
+    </section>
+
+    <section class="card">
+        <div class="card-heading">
+            <div>
+                <div class="section-label">Your Grounds</div>
+                <h3>My Turfs</h3>
+                <div class="card-subtitle">Check your registered turfs and approval status.</div>
+            </div>
+        </div>
+
+        {% if turfs %}
+            <div class="turf-list">
+                {% for turf in turfs %}
+                    <div class="turf-item">
+                        <strong>{{ turf.name }}</strong>
+                        <p class="muted">{{ turf.city }} · {{ turf.area }}</p>
+                        <p class="muted">Approval status</p>
+                        <span class="approval">{{ turf.status }}</span>
+                    </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <p class="empty">No turfs found.</p>
+        {% endif %}
+    </section>
+
+</main>
+
+<footer>
+    © MY TURF · Turf Booking Management
+</footer>
+
+</body>
+</html>

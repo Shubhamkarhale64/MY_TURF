@@ -1,0 +1,462 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>My Profile - MY TURF</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f4f7f4;
+            color: #17251b;
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        .navbar {
+            background: #102c1c;
+            padding: 17px 6%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .logo {
+            color: #86efac;
+            font-size: 25px;
+            font-weight: 800;
+            letter-spacing: 1px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .nav-links a {
+            color: #e5f4e8;
+            font-size: 14px;
+        }
+
+        .nav-links a:hover {
+            color: #86efac;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #14532d, #166534);
+            color: white;
+            padding: 38px 6%;
+        }
+
+        .hero-label {
+            color: #bbf7d0;
+            font-size: 12px;
+            font-weight: bold;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        .hero h1 {
+            font-size: clamp(28px, 4vw, 38px);
+            margin: 8px 0;
+        }
+
+        .hero p {
+            color: #e1f5e6;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: auto;
+            padding: 30px 20px 55px;
+        }
+
+        .breadcrumb {
+            font-size: 14px;
+            color: #647067;
+            margin-bottom: 24px;
+        }
+
+        .breadcrumb a {
+            color: #166534;
+            font-weight: bold;
+        }
+
+        .profile-card {
+            background: white;
+            border: 1px solid #e1e9e2;
+            border-radius: 17px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(16, 44, 28, 0.05);
+        }
+
+        .profile-header {
+            background: #fbfdfb;
+            border-bottom: 1px solid #e7eee8;
+            padding: 28px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .avatar {
+            width: 78px;
+            height: 78px;
+            flex-shrink: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 50%;
+            background: #dcfce7;
+            color: #166534;
+            font-size: 31px;
+            font-weight: 800;
+            border: 3px solid #bbf7d0;
+        }
+
+        .profile-header h2 {
+            color: #14532d;
+            font-size: 24px;
+            overflow-wrap: anywhere;
+        }
+
+        .profile-header p {
+            color: #647067;
+            font-size: 14px;
+            overflow-wrap: anywhere;
+        }
+
+        .section {
+            padding: 27px 28px;
+            border-bottom: 1px solid #e7eee8;
+        }
+
+        .section h3 {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+
+        .info-row {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            padding: 17px 0;
+            border-bottom: 1px solid #edf1ed;
+        }
+
+        .info-row:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .info-icon {
+            width: 42px;
+            height: 42px;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 11px;
+            background: #f0fdf4;
+            font-size: 19px;
+        }
+
+        .info-label {
+            display: block;
+            color: #647067;
+            font-size: 12px;
+            margin-bottom: 4px;
+        }
+
+        .info-value {
+            font-size: 15px;
+            font-weight: bold;
+            overflow-wrap: anywhere;
+        }
+
+        .actions-section {
+            padding: 26px 28px;
+        }
+
+        .actions-section h3 {
+            font-size: 18px;
+            margin-bottom: 8px;
+        }
+
+        .actions-section > p {
+            color: #647067;
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+
+        .action-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 14px;
+        }
+
+        .action-card {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 17px;
+            border: 1px solid #e1e9e2;
+            border-radius: 12px;
+            color: #17251b;
+            transition: 0.2s;
+        }
+
+        .action-card:hover {
+            border-color: #86c99a;
+            background: #f7fdf8;
+            transform: translateY(-2px);
+        }
+
+        .action-icon {
+            width: 44px;
+            height: 44px;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 11px;
+            background: #dcfce7;
+            font-size: 21px;
+        }
+
+        .action-card strong {
+            display: block;
+            font-size: 14px;
+        }
+
+        .action-card small {
+            display: block;
+            color: #647067;
+            font-size: 12px;
+            margin-top: 3px;
+        }
+
+        .logout-card {
+            border-color: #fecaca;
+        }
+
+        .logout-card .action-icon {
+            background: #fee2e2;
+        }
+
+        .logout-card:hover {
+            border-color: #fca5a5;
+            background: #fff8f8;
+        }
+
+        .footer {
+            background: #102c1c;
+            color: #cbd5ce;
+            padding: 24px 6%;
+            text-align: center;
+            font-size: 13px;
+        }
+
+        @media (max-width: 600px) {
+            .navbar {
+                padding: 15px 5%;
+            }
+
+            .nav-links {
+                gap: 12px;
+            }
+
+            .hero {
+                padding: 30px 5%;
+            }
+
+            .container {
+                padding: 22px 13px 40px;
+            }
+
+            .profile-header {
+                padding: 21px;
+                gap: 14px;
+            }
+
+            .avatar {
+                width: 62px;
+                height: 62px;
+                font-size: 25px;
+            }
+
+            .profile-header h2 {
+                font-size: 20px;
+            }
+
+            .section,
+            .actions-section {
+                padding: 22px 19px;
+            }
+
+            .action-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <a href="{% url 'home' %}" class="logo">⚽ MY TURF</a>
+
+        <div class="nav-links">
+            <a href="{% url 'home' %}">Home</a>
+            <a href="{% url 'turf_search' %}">Find Turfs</a>
+            <a href="{% url 'my_bookings' %}">My Bookings</a>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <p class="hero-label">Your account</p>
+        <h1>My Profile</h1>
+        <p>Manage your account and access your turf bookings.</p>
+    </section>
+
+    <main class="container">
+
+        <div class="breadcrumb">
+            <a href="{% url 'home' %}">Home</a>
+            &nbsp; / &nbsp; My Profile
+        </div>
+
+        <article class="profile-card">
+
+            <header class="profile-header">
+                <div class="avatar">
+                    {% if user.first_name %}
+                        {{ user.first_name|first|upper }}
+                    {% else %}
+                        {{ user.username|first|upper }}
+                    {% endif %}
+                </div>
+
+                <div>
+                    <h2>
+                        {% if user.first_name %}
+                            {{ user.first_name }}
+                        {% else %}
+                            {{ user.username }}
+                        {% endif %}
+                    </h2>
+
+                    <p>MY TURF Customer Account</p>
+                </div>
+            </header>
+
+            <section class="section">
+                <h3>Account Information</h3>
+
+                <div class="info-row">
+                    <div class="info-icon">👤</div>
+
+                    <div>
+                        <span class="info-label">FULL NAME</span>
+                        <p class="info-value">
+                            {% if user.first_name %}
+                                {{ user.first_name }}
+                            {% else %}
+                                Not provided
+                            {% endif %}
+                        </p>
+                    </div>
+                </div>
+
+                <div class="info-row">
+                    <div class="info-icon">✉️</div>
+
+                    <div>
+                        <span class="info-label">EMAIL ADDRESS</span>
+                        <p class="info-value">
+                            {% if user.email %}
+                                {{ user.email }}
+                            {% else %}
+                                Not provided
+                            {% endif %}
+                        </p>
+                    </div>
+                </div>
+
+                <div class="info-row">
+                    <div class="info-icon">🔑</div>
+
+                    <div>
+                        <span class="info-label">USERNAME</span>
+                        <p class="info-value">{{ user.username }}</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="actions-section">
+                <h3>Quick Actions</h3>
+                <p>Manage your reservations or discover your next game.</p>
+
+                <div class="action-grid">
+
+                    <a href="{% url 'my_bookings' %}" class="action-card">
+                        <div class="action-icon">📋</div>
+                        <div>
+                            <strong>My Bookings</strong>
+                            <small>View reservations and status</small>
+                        </div>
+                    </a>
+
+                    <a href="{% url 'turf_search' %}" class="action-card">
+                        <div class="action-icon">⚽</div>
+                        <div>
+                            <strong>Search Turfs</strong>
+                            <small>Find and book a playing slot</small>
+                        </div>
+                    </a>
+
+                    <a href="{% url 'home' %}" class="action-card">
+                        <div class="action-icon">🏠</div>
+                        <div>
+                            <strong>Home Page</strong>
+                            <small>Return to MY TURF home</small>
+                        </div>
+                    </a>
+
+                    <a href="{% url 'customer_logout' %}"
+                       class="action-card logout-card">
+                        <div class="action-icon">🚪</div>
+                        <div>
+                            <strong>Logout</strong>
+                            <small>Sign out of your account</small>
+                        </div>
+                    </a>
+
+                </div>
+            </section>
+
+        </article>
+
+    </main>
+
+    <footer class="footer">
+        <p>© {% now "Y" %} MY TURF. Find your game. Book your slot.</p>
+    </footer>
+
+</body>
+</html>

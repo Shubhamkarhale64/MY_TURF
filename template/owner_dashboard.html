@@ -1,0 +1,529 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Owner Dashboard | MY TURF</title>
+
+    <style>
+        :root {
+            --green: #14532d;
+            --dark: #092719;
+            --lime: #a3e635;
+            --white: #ffffff;
+            --background: #f3f7f3;
+            --text: #18251c;
+            --muted: #69776d;
+            --border: #e0e8e1;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            min-height: 100vh;
+            font-family: Arial, Helvetica, sans-serif;
+            background: var(--background);
+            color: var(--text);
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        .navbar {
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            min-height: 76px;
+            padding: 15px 6%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            background: var(--white);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 11px;
+            color: var(--green);
+            font-size: 24px;
+            font-weight: 800;
+            letter-spacing: -.7px;
+        }
+
+        .brand-icon {
+            width: 43px;
+            height: 43px;
+            display: grid;
+            place-items: center;
+            border-radius: 12px;
+            background: var(--green);
+            color: var(--lime);
+            font-size: 23px;
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+        }
+
+        .nav-link {
+            color: #425348;
+            font-size: 14px;
+            font-weight: 700;
+        }
+
+        .nav-link:hover {
+            color: var(--green);
+        }
+
+        .logout-link {
+            padding: 10px 16px;
+            border: 1px solid var(--border);
+            border-radius: 9px;
+            color: var(--green);
+            font-size: 14px;
+            font-weight: 700;
+            transition: background .2s;
+        }
+
+        .logout-link:hover {
+            background: #edf5ee;
+        }
+
+        .main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 35px 24px 50px;
+        }
+
+        .messages {
+            margin-bottom: 20px;
+        }
+
+        .message {
+            margin-bottom: 9px;
+            padding: 13px 16px;
+            border: 1px solid #bbebc9;
+            border-radius: 10px;
+            background: #eaf8ee;
+            color: #176b3a;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        .hero {
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 30px;
+            padding: 38px;
+            border-radius: 22px;
+            color: var(--white);
+            background:
+                radial-gradient(circle at 90% 15%, rgba(163,230,53,.18), transparent 30%),
+                linear-gradient(120deg, #1b6037, var(--dark));
+            box-shadow: 0 12px 35px rgba(14,50,29,.10);
+        }
+
+        .hero::after {
+            content: "";
+            position: absolute;
+            width: 240px;
+            height: 240px;
+            right: -90px;
+            bottom: -145px;
+            border: 1px solid rgba(255,255,255,.15);
+            border-radius: 50%;
+            box-shadow:
+                0 0 0 25px rgba(255,255,255,.035),
+                0 0 0 55px rgba(255,255,255,.025);
+        }
+
+        .hero-label {
+            display: inline-block;
+            margin-bottom: 18px;
+            padding: 8px 12px;
+            border: 1px solid rgba(255,255,255,.2);
+            border-radius: 30px;
+            color: #d9f99d;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .hero h1 {
+            position: relative;
+            z-index: 1;
+            margin-bottom: 13px;
+            font-size: clamp(27px, 4vw, 38px);
+            line-height: 1.2;
+            letter-spacing: -1px;
+        }
+
+        .hero h1 span {
+            color: var(--lime);
+        }
+
+        .hero p {
+            position: relative;
+            z-index: 1;
+            max-width: 600px;
+            color: #d1e2d5;
+            font-size: 15px;
+            line-height: 1.8;
+        }
+
+        .section-heading {
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .section-heading h2 {
+            margin-bottom: 7px;
+            color: var(--dark);
+            font-size: 24px;
+            letter-spacing: -.5px;
+        }
+
+        .section-heading p {
+            color: var(--muted);
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            min-height: 245px;
+            padding: 26px;
+            border: 1px solid var(--border);
+            border-radius: 17px;
+            background: var(--white);
+            box-shadow: 0 5px 20px rgba(14,50,29,.035);
+            transition: transform .2s, box-shadow .2s, border-color .2s;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            border-color: #b7d8bd;
+            box-shadow: 0 12px 28px rgba(14,50,29,.08);
+        }
+
+        .card-icon {
+            width: 49px;
+            height: 49px;
+            display: grid;
+            place-items: center;
+            margin-bottom: 20px;
+            border-radius: 13px;
+            background: #e9f6ec;
+            color: var(--green);
+            font-size: 24px;
+        }
+
+        .card h3 {
+            margin-bottom: 10px;
+            color: var(--dark);
+            font-size: 19px;
+        }
+
+        .card p {
+            flex: 1;
+            margin-bottom: 20px;
+            color: var(--muted);
+            font-size: 14px;
+            line-height: 1.75;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 9px;
+            min-height: 43px;
+            padding: 11px 16px;
+            border: 1px solid var(--green);
+            border-radius: 9px;
+            background: var(--green);
+            color: var(--white);
+            font-size: 13px;
+            font-weight: 700;
+            transition: background .2s;
+        }
+
+        .btn:hover {
+            background: #0f4225;
+        }
+
+        .btn-secondary {
+            border-color: #d7e4d9;
+            background: var(--white);
+            color: var(--green);
+        }
+
+        .btn-secondary:hover {
+            background: #edf5ee;
+        }
+
+        .quick-note {
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+            margin-top: 25px;
+            padding: 19px 21px;
+            border: 1px solid #dce9dc;
+            border-radius: 13px;
+            background: #edf5ee;
+        }
+
+        .note-icon {
+            font-size: 21px;
+        }
+
+        .quick-note h3 {
+            margin-bottom: 5px;
+            color: var(--green);
+            font-size: 14px;
+        }
+
+        .quick-note p {
+            color: #526457;
+            font-size: 13px;
+            line-height: 1.7;
+        }
+
+        footer {
+            padding: 24px 15px;
+            border-top: 1px solid var(--border);
+            background: var(--white);
+            color: var(--muted);
+            text-align: center;
+            font-size: 12px;
+        }
+
+        @media (max-width: 650px) {
+            .navbar {
+                padding: 13px 5%;
+                align-items: flex-start;
+            }
+
+            .brand {
+                font-size: 20px;
+            }
+
+            .brand-icon {
+                width: 38px;
+                height: 38px;
+            }
+
+            .nav-actions {
+                align-items: flex-end;
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            .nav-link,
+            .logout-link {
+                font-size: 12px;
+            }
+
+            .main {
+                padding: 24px 15px 35px;
+            }
+
+            .hero {
+                padding: 27px 23px;
+                border-radius: 17px;
+            }
+
+            .hero p {
+                font-size: 14px;
+            }
+
+            .section-heading h2 {
+                font-size: 21px;
+            }
+
+            .dashboard-grid {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+
+            .card {
+                min-height: 220px;
+                padding: 23px;
+            }
+        }
+
+        @media (max-width: 370px) {
+            .brand {
+                gap: 7px;
+                font-size: 17px;
+            }
+
+            .brand-icon {
+                width: 33px;
+                height: 33px;
+                font-size: 18px;
+            }
+
+            .nav-actions {
+                gap: 10px;
+            }
+
+            .hero {
+                padding: 23px 18px;
+            }
+
+            .card {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header class="navbar">
+    <a href="{% url 'owner_dashboard' %}" class="brand">
+        <span class="brand-icon">⚽</span>
+        <span>MY TURF</span>
+    </a>
+
+    <nav class="nav-actions">
+        <a class="nav-link" href="{% url 'owner_dashboard' %}">
+            Dashboard
+        </a>
+        <a class="logout-link" href="{% url 'customer_logout' %}">
+            Logout ↗
+        </a>
+    </nav>
+</header>
+
+<main class="main">
+
+    <div class="messages">
+        {% for message in messages %}
+            <div class="message">{{ message }}</div>
+        {% endfor %}
+    </div>
+
+    <section class="hero">
+        <div class="hero-label">⚡ Owner workspace</div>
+
+        <h1>
+            Welcome,
+            <span>{{ request.user.first_name|default:request.user.username }}!</span>
+        </h1>
+
+        <p>
+            Manage your turf business, organise availability and
+            keep track of customer bookings from your dashboard.
+        </p>
+    </section>
+
+    <section>
+        <div class="section-heading">
+            <div>
+                <h2>Manage Your Business</h2>
+                <p>Choose an option to manage your turf operations.</p>
+            </div>
+        </div>
+
+        <div class="dashboard-grid">
+
+            <!-- My Turfs -->
+            <article class="card">
+                <div class="card-icon">🏟️</div>
+                <h3>My Turfs</h3>
+                <p>
+                    View and manage the turfs registered under your account.
+                    Keep your facility details organised.
+                </p>
+                <a class="btn" href="{% url 'my_turfs' %}">
+                    Manage Turfs <span>→</span>
+                </a>
+            </article>
+
+            <!-- Add New Turf -->
+            <article class="card">
+                <div class="card-icon">＋</div>
+                <h3>Add New Turf</h3>
+                <p>
+                    Register a new sports facility and submit its details
+                    for the applicable admin review process.
+                </p>
+                <a class="btn" href="{% url 'add_turf' %}">
+                    Add Turf <span>→</span>
+                </a>
+            </article>
+
+            <!-- Manage Slots -->
+            <article class="card">
+                <div class="card-icon">🗓️</div>
+                <h3>Manage Slots</h3>
+                <p>
+                    Create, edit and organise available time slots
+                    for your turf.
+                </p>
+                <a class="btn btn-secondary" href="{% url 'manage_slots' %}">
+                    Manage Slots <span>→</span>
+                </a>
+            </article>
+
+            <!-- Customer Bookings -->
+            <article class="card">
+                <div class="card-icon">📋</div>
+                <h3>Customer Bookings</h3>
+                <p>
+                    Review customer bookings and view booking
+                    and payment status.
+                </p>
+                <a class="btn" href="{% url 'owner_bookings' %}">
+                    View Bookings <span>→</span>
+                </a>
+            </article>
+
+        </div>
+    </section>
+
+    <aside class="quick-note">
+        <span class="note-icon">💡</span>
+        <div>
+            <h3>Keep your turf information updated</h3>
+            <p>
+                Review your turf details and availability regularly.
+                Ensure your slot information reflects your actual schedule.
+            </p>
+        </div>
+    </aside>
+
+</main>
+
+<footer>
+    © MY TURF — Turf Booking Management System
+</footer>
+
+</body>
+</html>

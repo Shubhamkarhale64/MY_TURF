@@ -1,0 +1,619 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Add New Turf | MY TURF</title>
+
+    <style>
+        :root {
+            --green: #14532d;
+            --dark: #092719;
+            --lime: #a3e635;
+            --bg: #f3f7f3;
+            --white: #ffffff;
+            --text: #18251c;
+            --muted: #69776d;
+            --border: #dce6dd;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 15px;
+            padding: 15px 6%;
+            background: var(--white);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--green);
+            font-size: 23px;
+            font-weight: 800;
+        }
+
+        .brand-icon {
+            display: grid;
+            place-items: center;
+            width: 42px;
+            height: 42px;
+            border-radius: 12px;
+            background: var(--green);
+            color: var(--lime);
+            font-size: 22px;
+        }
+
+        .nav-link {
+            color: var(--green);
+            font-size: 14px;
+            font-weight: 700;
+        }
+
+        .nav-link:hover {
+            color: #39834e;
+        }
+
+        .container {
+            max-width: 950px;
+            margin: 0 auto;
+            padding: 35px 22px 50px;
+        }
+
+        .intro {
+            margin-bottom: 25px;
+        }
+
+        .eyebrow {
+            margin-bottom: 10px;
+            color: #438151;
+            font-size: 12px;
+            font-weight: 800;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        .intro h1 {
+            margin-bottom: 12px;
+            color: var(--dark);
+            font-size: clamp(28px, 4vw, 36px);
+            letter-spacing: -1px;
+        }
+
+        .intro p {
+            max-width: 650px;
+            color: var(--muted);
+            font-size: 14px;
+            line-height: 1.8;
+        }
+
+        .form-card {
+            overflow: hidden;
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            background: var(--white);
+            box-shadow: 0 8px 30px rgba(14, 50, 29, .05);
+        }
+
+        .form-header {
+            padding: 23px 28px;
+            background: linear-gradient(110deg, var(--dark), #1b6037);
+            color: var(--white);
+        }
+
+        .form-header h2 {
+            margin-bottom: 7px;
+            font-size: 20px;
+        }
+
+        .form-header p {
+            color: #d2e5d5;
+            font-size: 13px;
+            line-height: 1.7;
+        }
+
+        .form-body {
+            padding: 28px;
+        }
+
+        .section-title {
+            margin-bottom: 18px;
+            color: var(--green);
+            font-size: 16px;
+            font-weight: 800;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 21px 20px;
+        }
+
+        .field {
+            min-width: 0;
+        }
+
+        .field.full {
+            grid-column: 1 / -1;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 9px;
+            color: #2b3e30;
+            font-size: 13px;
+            font-weight: 700;
+        }
+
+        .required {
+            color: #c0392b;
+        }
+
+        input[type="text"],
+        input[type="number"],
+        textarea {
+            width: 100%;
+            padding: 13px 14px;
+            border: 1px solid #d5e0d7;
+            border-radius: 9px;
+            outline: none;
+            background: #fcfdfc;
+            color: var(--text);
+            font: inherit;
+            font-size: 14px;
+            transition: border-color .2s, box-shadow .2s;
+        }
+
+        input[type="text"],
+        input[type="number"] {
+            min-height: 47px;
+        }
+
+        textarea {
+            min-height: 125px;
+            resize: vertical;
+            line-height: 1.7;
+        }
+
+        input:focus,
+        textarea:focus {
+            border-color: #438151;
+            box-shadow: 0 0 0 3px rgba(67, 129, 81, .12);
+        }
+
+        input[type="file"] {
+            display: block;
+            width: 100%;
+            padding: 13px;
+            border: 1px dashed #a8c6ad;
+            border-radius: 9px;
+            background: #f6faf6;
+            color: var(--muted);
+            font-size: 13px;
+        }
+
+        input[type="file"]::file-selector-button {
+            margin-right: 12px;
+            padding: 9px 12px;
+            border: 0;
+            border-radius: 6px;
+            background: #e5f2e7;
+            color: var(--green);
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        .help-text {
+            margin-top: 8px;
+            color: var(--muted);
+            font-size: 12px;
+            line-height: 1.6;
+        }
+
+        .divider {
+            height: 1px;
+            margin: 28px 0;
+            background: #e8eee9;
+        }
+
+        .sports-box {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 11px;
+        }
+
+        .sport-option {
+            display: flex;
+            align-items: center;
+            gap: 11px;
+            min-height: 48px;
+            padding: 12px 14px;
+            border: 1px solid var(--border);
+            border-radius: 9px;
+            background: #fcfdfc;
+            cursor: pointer;
+            transition: border-color .2s, background .2s;
+        }
+
+        .sport-option:hover {
+            border-color: #9ec4a5;
+            background: #f2f8f3;
+        }
+
+        .sport-option input {
+            width: 17px;
+            height: 17px;
+            flex-shrink: 0;
+            accent-color: var(--green);
+            cursor: pointer;
+        }
+
+        .sport-option span {
+            color: #35493a;
+            font-size: 13px;
+            font-weight: 600;
+            overflow-wrap: anywhere;
+        }
+
+        .empty-sports {
+            grid-column: 1 / -1;
+            padding: 15px;
+            border-radius: 9px;
+            background: #f6f8f6;
+            color: var(--muted);
+            font-size: 13px;
+            line-height: 1.7;
+        }
+
+        .notice {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin-top: 25px;
+            padding: 16px;
+            border: 1px solid #dce9dc;
+            border-radius: 10px;
+            background: #edf5ee;
+        }
+
+        .notice-icon {
+            font-size: 20px;
+        }
+
+        .notice h3 {
+            margin-bottom: 6px;
+            color: var(--green);
+            font-size: 13px;
+        }
+
+        .notice p {
+            color: #526457;
+            font-size: 12px;
+            line-height: 1.8;
+        }
+
+        .form-actions {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 28px;
+            padding-top: 22px;
+            border-top: 1px solid #e8eee9;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 45px;
+            padding: 12px 19px;
+            border: 1px solid var(--green);
+            border-radius: 9px;
+            background: var(--green);
+            color: var(--white);
+            font-size: 13px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background .2s;
+        }
+
+        .btn:hover {
+            background: #0c3e22;
+        }
+
+        .btn-secondary {
+            border-color: #d5e0d7;
+            background: var(--white);
+            color: var(--green);
+        }
+
+        .btn-secondary:hover {
+            background: #edf5ee;
+        }
+
+        footer {
+            padding: 24px 15px;
+            border-top: 1px solid var(--border);
+            background: var(--white);
+            color: var(--muted);
+            text-align: center;
+            font-size: 12px;
+        }
+
+        @media (max-width: 600px) {
+            .navbar {
+                padding: 13px 5%;
+            }
+
+            .brand {
+                gap: 7px;
+                font-size: 19px;
+            }
+
+            .brand-icon {
+                width: 36px;
+                height: 36px;
+            }
+
+            .container {
+                padding: 26px 14px 35px;
+            }
+
+            .form-header {
+                padding: 21px;
+            }
+
+            .form-body {
+                padding: 21px;
+            }
+
+            .form-grid,
+            .sports-box {
+                grid-template-columns: 1fr;
+            }
+
+            .field.full {
+                grid-column: auto;
+            }
+
+            .form-actions {
+                flex-direction: column-reverse;
+            }
+
+            .form-actions .btn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header class="navbar">
+    <a class="brand" href="{% url 'owner_dashboard' %}">
+        <span class="brand-icon">⚽</span>
+        <span>MY TURF</span>
+    </a>
+
+    <a class="nav-link" href="{% url 'my_turfs' %}">
+        ← Back to My Turfs
+    </a>
+</header>
+
+<main class="container">
+
+    <section class="intro">
+        <div class="eyebrow">Owner workspace</div>
+        <h1>Add New Turf</h1>
+        <p>
+            Enter your facility information, upload a turf image and
+            select the sports available at your venue.
+        </p>
+    </section>
+
+    <section class="form-card">
+
+        <div class="form-header">
+            <h2>🏟️ Turf Information</h2>
+            <p>Complete the details below to register your facility.</p>
+        </div>
+
+        <div class="form-body">
+
+            <form method="POST" enctype="multipart/form-data">
+
+                {% csrf_token %}
+
+                <h3 class="section-title">Basic Details</h3>
+
+                <div class="form-grid">
+
+                    <div class="field full">
+                        <label for="name">
+                            Turf Name <span class="required">*</span>
+                        </label>
+                        <input
+                            type="text"
+                            id="name"
+                            name="name"
+                            placeholder="Enter your turf name"
+                            required>
+                    </div>
+
+                    <div class="field full">
+                        <label for="description">
+                            Description <span class="required">*</span>
+                        </label>
+                        <textarea
+                            id="description"
+                            name="description"
+                            placeholder="Describe your turf and its facilities"
+                            required></textarea>
+                    </div>
+
+                    <div class="field full">
+                        <label for="address">
+                            Full Address <span class="required">*</span>
+                        </label>
+                        <input
+                            type="text"
+                            id="address"
+                            name="address"
+                            placeholder="Enter the complete turf address"
+                            required>
+                    </div>
+
+                    <div class="field">
+                        <label for="city">
+                            City <span class="required">*</span>
+                        </label>
+                        <input
+                            type="text"
+                            id="city"
+                            name="city"
+                            placeholder="Enter city"
+                            required>
+                    </div>
+
+                    <div class="field">
+                        <label for="area">
+                            Area / Locality <span class="required">*</span>
+                        </label>
+                        <input
+                            type="text"
+                            id="area"
+                            name="area"
+                            placeholder="Enter area or locality"
+                            required>
+                    </div>
+
+                    <div class="field">
+                        <label for="ground_type">Ground Type</label>
+                        <input
+                            type="text"
+                            id="ground_type"
+                            name="ground_type"
+                            placeholder="e.g. Football, Box Cricket">
+                    </div>
+
+                    <div class="field">
+                        <label for="price_per_hour">
+                            Price Per Hour (₹) <span class="required">*</span>
+                        </label>
+                        <input
+                            type="number"
+                            id="price_per_hour"
+                            name="price_per_hour"
+                            step="0.01"
+                            min="0"
+                            placeholder="e.g. 1000"
+                            required>
+                    </div>
+
+                    <div class="field full">
+                        <label for="image">
+                            Turf Image <span class="required">*</span>
+                        </label>
+                        <input
+                            type="file"
+                            id="image"
+                            name="image"
+                            accept="image/*"
+                            required>
+                        <p class="help-text">
+                            Select a clear image of your turf. Supported formats
+                            depend on your Django image upload configuration.
+                        </p>
+                    </div>
+
+                </div>
+
+                <div class="divider"></div>
+
+                <h3 class="section-title">Available Sports</h3>
+
+                <div class="sports-box">
+
+                    {% for sport in sports %}
+
+                        <label class="sport-option">
+                            <input
+                                type="checkbox"
+                                name="sports"
+                                value="{{ sport.id }}">
+                            <span>{{ sport.name }}</span>
+                        </label>
+
+                    {% empty %}
+
+                        <p class="empty-sports">
+                            No sports are currently available to select.
+                        </p>
+
+                    {% endfor %}
+
+                </div>
+
+                <p class="help-text">
+                    Select the sports that customers can play at your facility.
+                </p>
+
+                <div class="notice">
+                    <span class="notice-icon">ℹ️</span>
+                    <div>
+                        <h3>Before submitting</h3>
+                        <p>
+                            Check your address, price and image before submitting
+                            the form. Any admin approval process depends on your
+                            existing Django backend.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="form-actions">
+                    <a class="btn btn-secondary"
+                       href="{% url 'my_turfs' %}">
+                        Cancel
+                    </a>
+
+                    <button class="btn" type="submit">
+                        Submit Turf →
+                    </button>
+                </div>
+
+            </form>
+
+        </div>
+    </section>
+
+</main>
+
+<footer>
+    © MY TURF — Turf Booking Management System
+</footer>
+
+</body>
+</html>

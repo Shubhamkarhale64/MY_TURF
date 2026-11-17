@@ -1,0 +1,432 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Owner Bookings | MY TURF</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f4f7f5;
+            color: #1c3024;
+        }
+
+        header {
+            background: #10291d;
+            color: white;
+            padding: 20px 6%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 14px;
+        }
+
+        .brand {
+            font-size: 25px;
+            font-weight: 800;
+            letter-spacing: 1px;
+        }
+
+        .brand span {
+            color: #8be0a4;
+        }
+
+        .back-link {
+            color: white;
+            text-decoration: none;
+            border: 1px solid #ffffff60;
+            padding: 11px 16px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .back-link:hover {
+            background: #ffffff15;
+        }
+
+        .container {
+            width: 92%;
+            max-width: 1350px;
+            margin: 38px auto;
+        }
+
+        .eyebrow {
+            color: #197542;
+            font-size: 12px;
+            font-weight: 800;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .page-heading {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 28px;
+        }
+
+        h1 {
+            margin: 10px 0;
+            color: #10291d;
+            font-size: 32px;
+        }
+
+        .page-heading p {
+            margin: 0;
+            color: #718076;
+            line-height: 1.6;
+        }
+
+        .booking-count {
+            background: white;
+            border: 1px solid #e0e9e2;
+            padding: 14px 18px;
+            border-radius: 10px;
+            color: #355441;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .table-card {
+            background: white;
+            padding: 24px;
+            border: 1px solid #e0e9e2;
+            border-radius: 16px;
+            box-shadow: 0 8px 28px #10291d08;
+        }
+
+        .table-title {
+            margin-bottom: 20px;
+        }
+
+        .table-title h2 {
+            font-size: 20px;
+            margin: 0 0 7px;
+            color: #173c27;
+        }
+
+        .table-title p {
+            font-size: 13px;
+            color: #829087;
+            margin: 0;
+        }
+
+        .table-wrap {
+            overflow-x: auto;
+            width: 100%;
+            border: 1px solid #e4ebe5;
+            border-radius: 10px;
+        }
+
+        table {
+            width: 100%;
+            min-width: 1100px;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 16px 14px;
+            border-bottom: 1px solid #e9eee9;
+            text-align: left;
+            font-size: 13px;
+        }
+
+        th {
+            background: #f0f6f1;
+            color: #355441;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.6px;
+            white-space: nowrap;
+        }
+
+        tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+        tbody tr:hover {
+            background: #fbfdfb;
+        }
+
+        .booking-code {
+            color: #176b3a;
+            font-weight: 800;
+        }
+
+        .customer-name, .turf-name {
+            color: #203d2b;
+            font-weight: 700;
+        }
+
+        .time-slot {
+            white-space: nowrap;
+            color: #53685a;
+        }
+
+        .amount {
+            font-weight: 800;
+            color: #173c27;
+            white-space: nowrap;
+        }
+
+        .status {
+            display: inline-block;
+            padding: 6px 9px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 800;
+            white-space: nowrap;
+        }
+
+        .status-confirmed, .status-success {
+            background: #e7f7eb;
+            color: #176534;
+        }
+
+        .status-pending {
+            background: #fff4d6;
+            color: #8a5a00;
+        }
+
+        .status-cancelled, .status-failed {
+            background: #fee9e7;
+            color: #b42318;
+        }
+
+        .status-completed {
+            background: #e8efff;
+            color: #2854a6;
+        }
+
+        .status-refunded {
+            background: #f0e8ff;
+            color: #6941a5;
+        }
+
+        .cancel-btn {
+            background: #c52b2b;
+            color: white;
+            padding: 9px 11px;
+            border: none;
+            border-radius: 7px;
+            font-size: 12px;
+            font-weight: 700;
+            cursor: pointer;
+            white-space: nowrap;
+        }
+
+        .cancel-btn:hover {
+            background: #a61f1f;
+        }
+
+        .actions form {
+            margin: 0;
+        }
+
+        .empty {
+            background: #fbfdfb;
+            border: 1px dashed #d6e2d8;
+            padding: 45px 20px;
+            border-radius: 12px;
+            margin-top: 5px;
+            text-align: center;
+        }
+
+        .empty h3 {
+            margin: 0 0 10px;
+            color: #173c27;
+            font-size: 21px;
+        }
+
+        .empty p {
+            margin: 0;
+            color: #829087;
+            line-height: 1.7;
+        }
+
+        footer {
+            text-align: center;
+            padding: 25px 15px;
+            color: #829087;
+            font-size: 13px;
+        }
+
+        @media (max-width: 650px) {
+            header {
+                padding: 18px 5%;
+            }
+
+            .container {
+                width: 94%;
+                margin: 27px auto;
+            }
+
+            h1 {
+                font-size: 27px;
+            }
+
+            .page-heading {
+                align-items: flex-start;
+            }
+
+            .table-card {
+                padding: 17px 12px;
+            }
+
+            .booking-count {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <div class="brand">MY <span>TURF</span></div>
+
+    <a class="back-link" href="{% url 'owner_dashboard' %}">
+        ← Back to Dashboard
+    </a>
+</header>
+
+<main class="container">
+
+    <div class="page-heading">
+        <div>
+            <div class="eyebrow">Owner Dashboard</div>
+            <h1>Customer Bookings</h1>
+            <p>View booking details and manage reservations for your registered turfs.</p>
+        </div>
+
+        {% if bookings %}
+            <div class="booking-count">
+                Total Bookings: {{ bookings|length }}
+            </div>
+        {% endif %}
+    </div>
+
+    <section class="table-card">
+
+        <div class="table-title">
+            <h2>Booking Records</h2>
+            <p>Customer, slot, payment and booking status information.</p>
+        </div>
+
+        {% if bookings %}
+        <div class="table-wrap">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Booking Code</th>
+                        <th>Customer</th>
+                        <th>Turf</th>
+                        <th>Date</th>
+                        <th>Time Slot</th>
+                        <th>Amount</th>
+                        <th>Booking Status</th>
+                        <th>Payment</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    {% for booking in bookings %}
+                    <tr>
+                        <td>
+                            <span class="booking-code">
+                                {{ booking.booking_code }}
+                            </span>
+                        </td>
+
+                        <td>
+                            <span class="customer-name">
+                                {{ booking.user.first_name|default:booking.user.username }}
+                            </span>
+                        </td>
+
+                        <td>
+                            <span class="turf-name">
+                                {{ booking.turf.name }}
+                            </span>
+                        </td>
+
+                        <td>{{ booking.booking_date|date:"d M Y" }}</td>
+
+                        <td class="time-slot">
+                            {{ booking.slot.start_time|time:"h:i A" }}
+                            – {{ booking.slot.end_time|time:"h:i A" }}
+                        </td>
+
+                        <td class="amount">₹{{ booking.amount }}</td>
+
+                        <td>
+                            <span class="status
+                                {% if booking.booking_status == 'CONFIRMED' %}status-confirmed
+                                {% elif booking.booking_status == 'PENDING' %}status-pending
+                                {% elif booking.booking_status == 'CANCELLED' %}status-cancelled
+                                {% elif booking.booking_status == 'COMPLETED' %}status-completed
+                                {% endif %}">
+                                {{ booking.get_booking_status_display }}
+                            </span>
+                        </td>
+
+                        <td>
+                            <span class="status
+                                {% if booking.payment_status == 'SUCCESS' %}status-success
+                                {% elif booking.payment_status == 'PENDING' %}status-pending
+                                {% elif booking.payment_status == 'FAILED' %}status-failed
+                                {% elif booking.payment_status == 'REFUNDED' %}status-refunded
+                                {% endif %}">
+                                {{ booking.get_payment_status_display }}
+                            </span>
+                        </td>
+
+                        <td class="actions">
+                            {% if booking.booking_status == "CONFIRMED" %}
+                            <form method="POST"
+                                  action="{% url 'owner_cancel_booking' booking.id %}"
+                                  onsubmit="return confirm('Cancel this booking?');">
+                                {% csrf_token %}
+                                <button type="submit" class="cancel-btn">
+                                    Cancel Booking
+                                </button>
+                            </form>
+                            {% else %}
+                                <span class="muted">—</span>
+                            {% endif %}
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        {% else %}
+        <div class="empty">
+            <h3>No Bookings Yet</h3>
+            <p>Customer bookings for your approved turfs will appear here.</p>
+        </div>
+        {% endif %}
+
+    </section>
+
+</main>
+
+<footer>
+    © MY TURF · Turf Booking Management
+</footer>
+
+</body>
+</html>

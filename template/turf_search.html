@@ -1,0 +1,846 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Find Turfs | MY TURF</title>
+
+    <style>
+        :root {
+            --green: #b9f36b;
+            --green-dark: #91ce46;
+            --dark: #09130e;
+            --panel: #12251b;
+            --panel-light: #192f23;
+            --white: #f6f8f4;
+            --muted: #a8b8ad;
+            --border: #2b4233;
+            --input: #0c1911;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background: var(--dark);
+            color: var(--white);
+            font-family: Arial, Helvetica, sans-serif;
+            line-height: 1.6;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        button,
+        input,
+        select {
+            font: inherit;
+        }
+
+        .container {
+            width: min(1200px, calc(100% - 40px));
+            margin: auto;
+        }
+
+        /* NAVBAR */
+
+        .navbar {
+            border-bottom: 1px solid var(--border);
+            background: #09130ef5;
+        }
+
+        .nav-inner {
+            min-height: 78px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+            padding-top: 15px;
+            padding-bottom: 15px;
+        }
+
+        .logo {
+            font-size: 27px;
+            font-weight: 800;
+            letter-spacing: -1px;
+            white-space: nowrap;
+        }
+
+        .logo span {
+            color: var(--green);
+        }
+
+        .nav-links {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 12px 20px;
+        }
+
+        .nav-links a {
+            color: #dce6de;
+            font-size: 14px;
+            font-weight: 600;
+            transition: color .2s;
+        }
+
+        .nav-links a:hover {
+            color: var(--green);
+        }
+
+        .nav-links .nav-button {
+            background: var(--green);
+            color: #102015;
+            padding: 9px 16px;
+            border-radius: 24px;
+        }
+
+        .nav-links .nav-button:hover {
+            background: var(--green-dark);
+            color: #102015;
+        }
+
+        /* PAGE INTRO */
+
+        .page-intro {
+            padding-top: 48px;
+            padding-bottom: 30px;
+        }
+
+        .eyebrow {
+            color: var(--green);
+            font-size: 12px;
+            font-weight: 800;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+
+        .page-intro h1 {
+            margin: 10px 0;
+            font-size: clamp(34px, 5vw, 52px);
+            line-height: 1.2;
+            letter-spacing: -1.5px;
+        }
+
+        .page-intro h1 span {
+            color: var(--green);
+        }
+
+        .page-intro p {
+            max-width: 680px;
+            color: var(--muted);
+        }
+
+        /* DJANGO MESSAGES */
+
+        .messages {
+            padding-top: 10px;
+        }
+
+        .message {
+            padding: 12px 16px;
+            margin-bottom: 10px;
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            background: var(--panel);
+        }
+
+        /* SEARCH PANEL */
+
+        .search-panel {
+            padding: 25px;
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            background: var(--panel);
+            margin-bottom: 40px;
+        }
+
+        .search-heading {
+            margin-bottom: 20px;
+        }
+
+        .search-heading h2 {
+            font-size: 22px;
+            margin-bottom: 4px;
+        }
+
+        .search-heading p {
+            color: var(--muted);
+            font-size: 14px;
+        }
+
+        .search-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 18px;
+        }
+
+        .field {
+            min-width: 0;
+        }
+
+        .field label {
+            display: block;
+            margin-bottom: 7px;
+            font-size: 14px;
+            font-weight: 700;
+        }
+
+        .field input,
+        .field select {
+            width: 100%;
+            min-height: 47px;
+            padding: 11px 13px;
+            border: 1px solid #354b3b;
+            border-radius: 9px;
+            outline: none;
+            background: var(--input);
+            color: var(--white);
+        }
+
+        .field input::placeholder {
+            color: #819186;
+        }
+
+        .field input:focus,
+        .field select:focus {
+            border-color: var(--green);
+            box-shadow: 0 0 0 3px #b9f36b18;
+        }
+
+        .search-actions {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 12px;
+            margin-top: 22px;
+        }
+
+        .primary-button,
+        .clear-button,
+        .details-button {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 43px;
+            padding: 10px 20px;
+            border-radius: 9px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: transform .2s, background .2s;
+        }
+
+        .primary-button {
+            border: none;
+            background: var(--green);
+            color: #102015;
+        }
+
+        .primary-button:hover,
+        .details-button:hover {
+            background: var(--green-dark);
+            transform: translateY(-2px);
+        }
+
+        .clear-button {
+            border: 1px solid #53675a;
+            background: transparent;
+            color: var(--white);
+        }
+
+        .clear-button:hover {
+            border-color: var(--green);
+            color: var(--green);
+        }
+
+        /* RESULTS */
+
+        .results-section {
+            padding-bottom: 70px;
+        }
+
+        .results-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 22px;
+        }
+
+        .results-header h2 {
+            font-size: 29px;
+        }
+
+        .results-header p {
+            color: var(--muted);
+            font-size: 14px;
+        }
+
+        .turf-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 23px;
+        }
+
+        .turf-card {
+            min-width: 0;
+            overflow: hidden;
+            border: 1px solid var(--border);
+            border-radius: 17px;
+            background: var(--panel);
+            transition: transform .25s, border-color .25s;
+        }
+
+        .turf-card:hover {
+            transform: translateY(-5px);
+            border-color: #8dbd61;
+        }
+
+        .turf-image {
+            position: relative;
+            height: 210px;
+            overflow: hidden;
+            background:
+                radial-gradient(ellipse at center, #326844, #12251b);
+        }
+
+        .turf-image img {
+            width: 100%;
+            height: 100%;
+            display: block;
+            object-fit: cover;
+            transition: transform .35s;
+        }
+
+        .turf-card:hover .turf-image img {
+            transform: scale(1.04);
+        }
+
+        .image-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            gap: 5px;
+            color: var(--green);
+        }
+
+        .image-placeholder span {
+            font-size: 45px;
+        }
+
+        .image-placeholder p {
+            font-size: 13px;
+            color: var(--muted);
+        }
+
+        .turf-content {
+            padding: 20px;
+        }
+
+        .turf-title-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .turf-title-row h3 {
+            font-size: 20px;
+            line-height: 1.35;
+            overflow-wrap: anywhere;
+        }
+
+        .rating {
+            flex-shrink: 0;
+            padding: 4px 8px;
+            border: 1px solid #6b6332;
+            border-radius: 7px;
+            background: #b9f36b12;
+            color: var(--green);
+            font-size: 13px;
+            font-weight: 700;
+        }
+
+        .location {
+            margin-top: 8px;
+            color: var(--muted);
+            font-size: 14px;
+            overflow-wrap: anywhere;
+        }
+
+        .address {
+            margin-top: 5px;
+            color: #91a398;
+            font-size: 13px;
+            overflow-wrap: anywhere;
+        }
+
+        .turf-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 15px;
+        }
+
+        .meta-tag {
+            padding: 5px 9px;
+            border: 1px solid var(--border);
+            border-radius: 7px;
+            color: #d8e4db;
+            font-size: 12px;
+        }
+
+        .sports {
+            min-height: 28px;
+            margin-top: 13px;
+            color: var(--muted);
+            font-size: 13px;
+            overflow-wrap: anywhere;
+        }
+
+        .price-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 12px;
+            margin-top: 19px;
+            padding-top: 16px;
+            border-top: 1px solid var(--border);
+        }
+
+        .price-label {
+            display: block;
+            color: var(--muted);
+            font-size: 12px;
+        }
+
+        .price {
+            color: var(--green);
+            font-size: 22px;
+            font-weight: 800;
+            line-height: 1.5;
+        }
+
+        .price small {
+            color: var(--muted);
+            font-size: 12px;
+            font-weight: 400;
+        }
+
+        .details-button {
+            flex-shrink: 0;
+            background: var(--green);
+            color: #102015;
+            font-size: 13px;
+            padding: 9px 13px;
+        }
+
+        /* EMPTY STATE */
+
+        .empty-state {
+            padding: 45px 20px;
+            border: 1px dashed #405746;
+            border-radius: 16px;
+            background: #ffffff03;
+            text-align: center;
+        }
+
+        .empty-state .empty-icon {
+            font-size: 42px;
+        }
+
+        .empty-state h3 {
+            margin: 10px 0 5px;
+            font-size: 23px;
+        }
+
+        .empty-state p {
+            margin-bottom: 20px;
+            color: var(--muted);
+        }
+
+        /* FOOTER */
+
+        footer {
+            padding: 25px 0;
+            border-top: 1px solid var(--border);
+            color: var(--muted);
+            text-align: center;
+            font-size: 13px;
+        }
+
+        footer strong {
+            color: var(--green);
+        }
+
+        /* RESPONSIVE */
+
+        @media (max-width: 950px) {
+            .nav-inner {
+                align-items: flex-start;
+                flex-direction: column;
+                justify-content: center;
+                padding-top: 17px;
+                padding-bottom: 17px;
+            }
+
+            .turf-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                width: calc(100% - 30px);
+            }
+
+            .logo {
+                font-size: 25px;
+            }
+
+            .nav-links {
+                gap: 11px 15px;
+            }
+
+            .nav-links a {
+                font-size: 13px;
+            }
+
+            .page-intro {
+                padding-top: 32px;
+            }
+
+            .page-intro h1 {
+                font-size: 36px;
+            }
+
+            .search-panel {
+                padding: 18px;
+            }
+
+            .search-grid {
+                grid-template-columns: 1fr;
+                gap: 14px;
+            }
+
+            .search-actions {
+                align-items: stretch;
+                flex-direction: column;
+            }
+
+            .search-actions a,
+            .search-actions button {
+                width: 100%;
+            }
+
+            .turf-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .turf-image {
+                height: 225px;
+            }
+
+            .results-header h2 {
+                font-size: 25px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVIGATION -->
+    <header class="navbar">
+        <div class="container nav-inner">
+
+            <a class="logo" href="{% url 'home' %}">
+                MY <span>TURF</span> ⚽
+            </a>
+
+            <nav class="nav-links">
+                <a href="{% url 'home' %}">Home</a>
+                <a href="{% url 'turf_search' %}">Find Turfs</a>
+
+                {% if user.is_authenticated %}
+                    <a href="{% url 'my_bookings' %}">My Bookings</a>
+                    <a href="{% url 'customer_profile' %}">My Profile</a>
+                    <a href="{% url 'customer_logout' %}">Logout</a>
+                {% else %}
+                    <a href="{% url 'customer_login' %}">Customer Login</a>
+                    <a href="{% url 'customer_register' %}">Register</a>
+                {% endif %}
+
+                <a href="{% url 'owner_login' %}">Owner Login</a>
+                <a class="nav-button" href="{% url 'owner_register' %}">
+                    Become an Owner
+                </a>
+            </nav>
+
+        </div>
+    </header>
+
+    <main class="container">
+
+        <!-- DJANGO MESSAGES -->
+        {% if messages %}
+            <div class="messages">
+                {% for message in messages %}
+                    <div class="message">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+
+        <!-- PAGE INTRO -->
+        <section class="page-intro">
+            <p class="eyebrow">Find your perfect playing ground</p>
+
+            <h1>
+                Discover Your Next<br>
+                <span>Game Destination.</span>
+            </h1>
+
+            <p>
+                Search sports turfs by name, city, sport and budget.
+                Compare your options and choose a ground for your next match.
+            </p>
+        </section>
+
+        <!-- SEARCH AND FILTERS -->
+        <section class="search-panel">
+
+            <div class="search-heading">
+                <h2>Find Your Turf</h2>
+                <p>Set your preferences to discover matching grounds.</p>
+            </div>
+
+            <form method="GET" action="{% url 'turf_search' %}">
+
+                <div class="search-grid">
+
+                    <div class="field">
+                        <label for="search">Turf Name</label>
+                        <input
+                            id="search"
+                            type="text"
+                            name="search"
+                            value="{{ search|default:'' }}"
+                            placeholder="e.g. Green Arena"
+                        >
+                    </div>
+
+                    <div class="field">
+                        <label for="city">City or Location</label>
+                        <input
+                            id="city"
+                            type="text"
+                            name="city"
+                            value="{{ city|default:'' }}"
+                            placeholder="Enter city"
+                        >
+                    </div>
+
+                    <div class="field">
+                        <label for="sport">Sport</label>
+                        <select id="sport" name="sport">
+                            <option value="">All Sports</option>
+
+                            {% for sport in sports %}
+                                <option
+                                    value="{{ sport.id }}"
+                                    {% if sport_id|stringformat:"s" == sport.id|stringformat:"s" %}selected{% endif %}
+                                >
+                                    {{ sport.name }}
+                                </option>
+                            {% endfor %}
+                        </select>
+                    </div>
+
+                    <div class="field">
+                        <label for="max_price">Maximum Price Per Hour (₹)</label>
+                        <input
+                            id="max_price"
+                            type="number"
+                            name="max_price"
+                            value="{{ max_price|default:'' }}"
+                            min="0"
+                            step="0.01"
+                            placeholder="e.g. 1000"
+                        >
+                    </div>
+
+                </div>
+
+                <div class="search-actions">
+                    <button class="primary-button" type="submit">
+                        Search Turfs &nbsp; →
+                    </button>
+
+                    <a class="clear-button" href="{% url 'turf_search' %}">
+                        Clear Filters
+                    </a>
+                </div>
+
+            </form>
+
+        </section>
+
+        <!-- TURF RESULTS -->
+        <section class="results-section">
+
+            <div class="results-header">
+                <div>
+                    <h2>Available Turfs</h2>
+                    <p>Explore grounds and compare prices before booking.</p>
+                </div>
+            </div>
+
+            {% if turfs %}
+
+                <div class="turf-grid">
+
+                    {% for turf in turfs %}
+
+                        <article class="turf-card">
+
+                            <div class="turf-image">
+
+                                {% if turf.image %}
+                                    <img
+                                        src="{{ turf.image.url }}"
+                                        alt="{{ turf.name }}"
+                                        loading="lazy"
+                                    >
+                                {% else %}
+                                    <div class="image-placeholder">
+                                        <span aria-hidden="true">🏟️</span>
+                                        <p>Turf image not available</p>
+                                    </div>
+                                {% endif %}
+
+                            </div>
+
+                            <div class="turf-content">
+
+                                <div class="turf-title-row">
+                                    <h3>{{ turf.name }}</h3>
+
+                                    <span class="rating">
+                                        ★ {{ turf.rating|default:"0.0" }}
+                                    </span>
+                                </div>
+
+                                <p class="location">
+                                    📍 {{ turf.area }}{% if turf.area and turf.city %}, {% endif %}{{ turf.city }}
+                                </p>
+
+                                {% if turf.address %}
+                                    <p class="address">
+                                        {{ turf.address }}
+                                    </p>
+                                {% endif %}
+
+                                <div class="turf-meta">
+                                    {% if turf.ground_type %}
+                                        <span class="meta-tag">
+                                            {{ turf.ground_type }}
+                                        </span>
+                                    {% endif %}
+
+                                    <span class="meta-tag">
+                                        Turf Ground
+                                    </span>
+                                </div>
+
+                                <p class="sports">
+                                    <strong>Sports:</strong>
+
+                                    {% for turf_sport in turf.turf_sports.all %}
+                                        {{ turf_sport.sport.name }}{% if not forloop.last %}, {% endif %}
+                                    {% empty %}
+                                        No sports added
+                                    {% endfor %}
+                                </p>
+
+                                <div class="price-row">
+
+                                    <div>
+                                        <span class="price-label">
+                                            Starting price
+                                        </span>
+
+                                        <div class="price">
+                                            ₹{{ turf.price_per_hour|floatformat:2 }}
+                                            <small>/ hour</small>
+                                        </div>
+                                    </div>
+
+                                    <a
+                                        class="details-button"
+                                        href="{% url 'turf_detail' turf.id %}"
+                                    >
+                                        View Details →
+                                    </a>
+
+                                </div>
+
+                            </div>
+
+                        </article>
+
+                    {% endfor %}
+
+                </div>
+
+            {% else %}
+
+                <div class="empty-state">
+                    <div class="empty-icon" aria-hidden="true">🔎</div>
+
+                    <h3>No Turfs Found</h3>
+
+                    <p>
+                        We couldn't find any turfs matching your filters.
+                        Try another city, sport or price range.
+                    </p>
+
+                    <a
+                        class="primary-button"
+                        href="{% url 'turf_search' %}"
+                    >
+                        Show All Turfs
+                    </a>
+                </div>
+
+            {% endif %}
+
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <p>
+                © {% now "Y" %} <strong>MY TURF</strong>
+                | Turf Booking &amp; Management System
+            </p>
+            <p>Academic Project</p>
+        </div>
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,1207 @@
+[
+{
+  "model": "admin.logentry",
+  "pk": 26,
+  "fields": {
+    "action_time": "2026-10-09T14:16:29.575Z",
+    "user": 9,
+    "content_type": 8,
+    "object_id": "3",
+    "object_repr": "arena_turf@6478",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Verification status\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 27,
+  "fields": {
+    "action_time": "2026-10-09T14:56:52.313Z",
+    "user": 9,
+    "content_type": 4,
+    "object_id": "8",
+    "object_repr": "karhaleshubham2@gmail.com",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 28,
+  "fields": {
+    "action_time": "2026-10-09T14:56:52.313Z",
+    "user": 9,
+    "content_type": 4,
+    "object_id": "10",
+    "object_repr": "sachindolas1@gmail.com",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 29,
+  "fields": {
+    "action_time": "2026-10-09T14:59:05.117Z",
+    "user": 9,
+    "content_type": 8,
+    "object_id": "4",
+    "object_repr": "Arena 7 sports",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Verification status\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 30,
+  "fields": {
+    "action_time": "2026-10-10T01:00:49.450Z",
+    "user": 9,
+    "content_type": 10,
+    "object_id": "3",
+    "object_repr": "Tennis cricket",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 31,
+  "fields": {
+    "action_time": "2026-10-10T01:01:24.445Z",
+    "user": 9,
+    "content_type": 10,
+    "object_id": "4",
+    "object_repr": "Box tennis cricket",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 32,
+  "fields": {
+    "action_time": "2026-10-10T01:01:51.548Z",
+    "user": 9,
+    "content_type": 10,
+    "object_id": "5",
+    "object_repr": "Box hockey",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 33,
+  "fields": {
+    "action_time": "2026-10-10T01:02:18.662Z",
+    "user": 9,
+    "content_type": 10,
+    "object_id": "6",
+    "object_repr": "Badminton",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 34,
+  "fields": {
+    "action_time": "2026-10-10T13:24:43.201Z",
+    "user": 9,
+    "content_type": 7,
+    "object_id": "4",
+    "object_repr": "Turf object (4)",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Name\", \"Description\", \"Open time\", \"Close time\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 35,
+  "fields": {
+    "action_time": "2026-10-10T13:24:54.682Z",
+    "user": 9,
+    "content_type": 7,
+    "object_id": "4",
+    "object_repr": "Turf object (4)",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Status\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 36,
+  "fields": {
+    "action_time": "2026-10-10T13:25:02.213Z",
+    "user": 9,
+    "content_type": 7,
+    "object_id": "3",
+    "object_repr": "Turf object (3)",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Name\", \"Description\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 37,
+  "fields": {
+    "action_time": "2026-10-11T03:08:07.696Z",
+    "user": 9,
+    "content_type": 7,
+    "object_id": "3",
+    "object_repr": "Turf object (3)",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Status\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 38,
+  "fields": {
+    "action_time": "2026-10-11T14:37:22.936Z",
+    "user": 9,
+    "content_type": 7,
+    "object_id": "5",
+    "object_repr": "mahakal turfs",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Status\"]}}]"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 1,
+  "fields": {
+    "name": "Can add log entry",
+    "content_type": 1,
+    "codename": "add_logentry"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 2,
+  "fields": {
+    "name": "Can change log entry",
+    "content_type": 1,
+    "codename": "change_logentry"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 3,
+  "fields": {
+    "name": "Can delete log entry",
+    "content_type": 1,
+    "codename": "delete_logentry"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 4,
+  "fields": {
+    "name": "Can view log entry",
+    "content_type": 1,
+    "codename": "view_logentry"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 5,
+  "fields": {
+    "name": "Can add permission",
+    "content_type": 3,
+    "codename": "add_permission"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 6,
+  "fields": {
+    "name": "Can change permission",
+    "content_type": 3,
+    "codename": "change_permission"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 7,
+  "fields": {
+    "name": "Can delete permission",
+    "content_type": 3,
+    "codename": "delete_permission"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 8,
+  "fields": {
+    "name": "Can view permission",
+    "content_type": 3,
+    "codename": "view_permission"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 9,
+  "fields": {
+    "name": "Can add group",
+    "content_type": 2,
+    "codename": "add_group"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 10,
+  "fields": {
+    "name": "Can change group",
+    "content_type": 2,
+    "codename": "change_group"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 11,
+  "fields": {
+    "name": "Can delete group",
+    "content_type": 2,
+    "codename": "delete_group"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 12,
+  "fields": {
+    "name": "Can view group",
+    "content_type": 2,
+    "codename": "view_group"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 13,
+  "fields": {
+    "name": "Can add user",
+    "content_type": 4,
+    "codename": "add_user"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 14,
+  "fields": {
+    "name": "Can change user",
+    "content_type": 4,
+    "codename": "change_user"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 15,
+  "fields": {
+    "name": "Can delete user",
+    "content_type": 4,
+    "codename": "delete_user"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 16,
+  "fields": {
+    "name": "Can view user",
+    "content_type": 4,
+    "codename": "view_user"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 17,
+  "fields": {
+    "name": "Can add content type",
+    "content_type": 5,
+    "codename": "add_contenttype"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 18,
+  "fields": {
+    "name": "Can change content type",
+    "content_type": 5,
+    "codename": "change_contenttype"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 19,
+  "fields": {
+    "name": "Can delete content type",
+    "content_type": 5,
+    "codename": "delete_contenttype"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 20,
+  "fields": {
+    "name": "Can view content type",
+    "content_type": 5,
+    "codename": "view_contenttype"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 21,
+  "fields": {
+    "name": "Can add session",
+    "content_type": 6,
+    "codename": "add_session"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 22,
+  "fields": {
+    "name": "Can change session",
+    "content_type": 6,
+    "codename": "change_session"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 23,
+  "fields": {
+    "name": "Can delete session",
+    "content_type": 6,
+    "codename": "delete_session"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 24,
+  "fields": {
+    "name": "Can view session",
+    "content_type": 6,
+    "codename": "view_session"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 25,
+  "fields": {
+    "name": "Can add turf owner",
+    "content_type": 8,
+    "codename": "add_turfowner"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 26,
+  "fields": {
+    "name": "Can change turf owner",
+    "content_type": 8,
+    "codename": "change_turfowner"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 27,
+  "fields": {
+    "name": "Can delete turf owner",
+    "content_type": 8,
+    "codename": "delete_turfowner"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 28,
+  "fields": {
+    "name": "Can view turf owner",
+    "content_type": 8,
+    "codename": "view_turfowner"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 29,
+  "fields": {
+    "name": "Can add turf",
+    "content_type": 7,
+    "codename": "add_turf"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 30,
+  "fields": {
+    "name": "Can change turf",
+    "content_type": 7,
+    "codename": "change_turf"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 31,
+  "fields": {
+    "name": "Can delete turf",
+    "content_type": 7,
+    "codename": "delete_turf"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 32,
+  "fields": {
+    "name": "Can view turf",
+    "content_type": 7,
+    "codename": "view_turf"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 33,
+  "fields": {
+    "name": "Can add turf sport",
+    "content_type": 9,
+    "codename": "add_turfsport"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 34,
+  "fields": {
+    "name": "Can change turf sport",
+    "content_type": 9,
+    "codename": "change_turfsport"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 35,
+  "fields": {
+    "name": "Can delete turf sport",
+    "content_type": 9,
+    "codename": "delete_turfsport"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 36,
+  "fields": {
+    "name": "Can view turf sport",
+    "content_type": 9,
+    "codename": "view_turfsport"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 37,
+  "fields": {
+    "name": "Can add sport",
+    "content_type": 10,
+    "codename": "add_sport"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 38,
+  "fields": {
+    "name": "Can change sport",
+    "content_type": 10,
+    "codename": "change_sport"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 39,
+  "fields": {
+    "name": "Can delete sport",
+    "content_type": 10,
+    "codename": "delete_sport"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 40,
+  "fields": {
+    "name": "Can view sport",
+    "content_type": 10,
+    "codename": "view_sport"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 41,
+  "fields": {
+    "name": "Can add slot",
+    "content_type": 11,
+    "codename": "add_slot"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 42,
+  "fields": {
+    "name": "Can change slot",
+    "content_type": 11,
+    "codename": "change_slot"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 43,
+  "fields": {
+    "name": "Can delete slot",
+    "content_type": 11,
+    "codename": "delete_slot"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 44,
+  "fields": {
+    "name": "Can view slot",
+    "content_type": 11,
+    "codename": "view_slot"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 45,
+  "fields": {
+    "name": "Can add booking",
+    "content_type": 12,
+    "codename": "add_booking"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 46,
+  "fields": {
+    "name": "Can change booking",
+    "content_type": 12,
+    "codename": "change_booking"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 47,
+  "fields": {
+    "name": "Can delete booking",
+    "content_type": 12,
+    "codename": "delete_booking"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 48,
+  "fields": {
+    "name": "Can view booking",
+    "content_type": 12,
+    "codename": "view_booking"
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 9,
+  "fields": {
+    "password": "pbkdf2_sha256$1500000$j68aKSyiTGvsNgeDk4ifHt$/xrQyW77//Q0llwIgtD+ufUbhaRck1L3wGkIdAIjOD0=",
+    "last_login": "2026-10-11T14:36:47.501Z",
+    "is_superuser": true,
+    "username": "shubham_patil",
+    "first_name": "",
+    "last_name": "",
+    "email": "karhaleshubham2@gmail.com",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2026-10-09T14:07:49.406Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 11,
+  "fields": {
+    "password": "pbkdf2_sha256$1500000$PigE1nC4vcygJLf2cOArcq$icQqYDuyzhF9GyXBrLNlsxAP31z1p3pf6kqWRdLfzQI=",
+    "last_login": "2026-10-13T12:17:56.269Z",
+    "is_superuser": false,
+    "username": "karhaleshubham307@gmail.com",
+    "first_name": "sachin_patil",
+    "last_name": "",
+    "email": "karhaleshubham307@gmail.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-10-09T14:58:36.621Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 12,
+  "fields": {
+    "password": "pbkdf2_sha256$1500000$OtslCwTfAmqKd9jxndlXTi$U3yN7S0Zd6B1HqgPo3yr5YdVcdmLPx9iHDy3PsBfGSk=",
+    "last_login": "2026-10-11T13:28:02.540Z",
+    "is_superuser": false,
+    "username": "rajdeoshubham2@gmail.com",
+    "first_name": "shubham Rajdeo",
+    "last_name": "",
+    "email": "rajdeoshubham2@gmail.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-10-11T13:28:01.791Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 13,
+  "fields": {
+    "password": "pbkdf2_sha256$1500000$BIkIa2q66A3f8YGetvQFkw$1JPncKBtAS542hdoe+onkfAGyHT3kY6P2LOj2+NQsd0=",
+    "last_login": "2026-10-13T12:20:10.841Z",
+    "is_superuser": false,
+    "username": "vishalshelke2@gmail.com",
+    "first_name": "vishal dnyandev shelke",
+    "last_name": "",
+    "email": "vishalshelke2@gmail.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-10-13T10:37:07.031Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 1,
+  "fields": {
+    "app_label": "admin",
+    "model": "logentry"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 2,
+  "fields": {
+    "app_label": "auth",
+    "model": "group"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 3,
+  "fields": {
+    "app_label": "auth",
+    "model": "permission"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 4,
+  "fields": {
+    "app_label": "auth",
+    "model": "user"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 5,
+  "fields": {
+    "app_label": "contenttypes",
+    "model": "contenttype"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 6,
+  "fields": {
+    "app_label": "sessions",
+    "model": "session"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 7,
+  "fields": {
+    "app_label": "turfapp",
+    "model": "turf"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 8,
+  "fields": {
+    "app_label": "turfapp",
+    "model": "turfowner"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 9,
+  "fields": {
+    "app_label": "turfapp",
+    "model": "turfsport"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 10,
+  "fields": {
+    "app_label": "sportsapp",
+    "model": "sport"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 11,
+  "fields": {
+    "app_label": "turfapp",
+    "model": "slot"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 12,
+  "fields": {
+    "app_label": "turfapp",
+    "model": "booking"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "10fb9eqk17s0qw6z54px7lhjdozacbl4",
+  "fields": {
+    "session_data": "e30:1xBs5G:SpjTOjrg0ofjMdawBIlPDvHr3az7XLnaDOjrkuj7Z30",
+    "expire_date": "2026-10-14T11:02:46.457Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "49v4cslaszq24llrvikmngpomi44jjnz",
+  "fields": {
+    "session_data": ".eJxVjLEOwjAMRP8lM4pIAnHKyM43RLZj0wJqpKadEP9OK3WA5YZ77-5tMi5zn5cmUx6KuRhnDr8dIT9l3EB54Hivlus4TwPZTbE7bfZWi7yuu_t30GPr13VKTpkZIwAEPMua4KXDo_cKUJSoRPWOIouianScTkGcEoQAQJ35fAH8NDip:1xFA82:UDghRZo8_E6vlgecfmsJ8qP2z9NJED8tMOZtZpmJgF4",
+    "expire_date": "2026-10-23T12:55:14.553Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "92iwxk2h2134xmoduq2tmua186clr03w",
+  "fields": {
+    "session_data": "e30:1xBsDj:x4hqctPg6FZ6piRn35B6M_Od4o2hyCGaWpjrqjuGkgw",
+    "expire_date": "2026-10-14T11:11:31.261Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "ayypspnnzr0qg2f94vnub1pgq42xb62w",
+  "fields": {
+    "session_data": ".eJxVjMsOwiAQRf-FtSHAlJdL934DGRiQqoGktCvjv2uTLnR7zzn3xQJuaw3byEuYiZ2ZBHb6HSOmR247oTu2W-ept3WZI98VftDBr53y83K4fwcVR_3WtqAT5ASYZEFKsKiyNVMiiK5IwlwMpggelBLOJ51RSB2t117oYmBi7w8B3jek:1xGbUI:ZurDkLAZ4R1SioFkBDNfzgElvAtduOnhreV63wyWgMM",
+    "expire_date": "2026-10-27T12:20:10.847Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "li4vrz5jxr7poxri8fn73rstb1odz7ah",
+  "fields": {
+    "session_data": "e30:1xBYql:E2Fi__zUygKtHJc6WB3tmpHPV6Y8AFC9aMzr3_LNHAg",
+    "expire_date": "2026-10-13T14:30:31.422Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "v3j15dpg8u5tv407z6i3o67zdzjb6dki",
+  "fields": {
+    "session_data": ".eJxVjEEOwiAQRe_C2pACA4hL9z0DgZlBqoYmpV0Z765NutDtf-_9l4hpW2vcOi9xInERSonT75gTPrjthO6p3WaJc1uXKctdkQftcpyJn9fD_Tuoqddv7bVXiORK8JaNDRkLa0rFaZcIIJMBgKDZsSIYgnMDsiFjMJzB-lDE-wMVrTge:1xG6Zq:9pVR6765mGzp4yd-NdBxDHHcUnYHUV2UbrNhG7t2_tI",
+    "expire_date": "2026-10-26T03:19:50.445Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "zclch0ftedg3d2ft34icw5ab4iwl4vc9",
+  "fields": {
+    "session_data": "e30:1xBsHP:9WHWifu3oCVWjcO3VRmow0gn4IuoPiijMh46iXI7TSg",
+    "expire_date": "2026-10-14T11:15:19.944Z"
+  }
+},
+{
+  "model": "turfapp.turfowner",
+  "pk": 4,
+  "fields": {
+    "user": 11,
+    "business_name": "Arena 7 sports",
+    "verification_status": "VERIFIED",
+    "created_at": "2026-10-09T14:58:37.970Z"
+  }
+},
+{
+  "model": "turfapp.turf",
+  "pk": 3,
+  "fields": {
+    "owner": 4,
+    "name": "shiva turf",
+    "image": "",
+    "description": "this playing turf",
+    "address": "warje pune",
+    "city": "pune",
+    "area": "warje area",
+    "latitude": null,
+    "longitude": null,
+    "ground_type": "grass",
+    "open_time": null,
+    "close_time": null,
+    "price_per_hour": "900.00",
+    "status": "APPROVED",
+    "rating": "0.00",
+    "created_at": "2026-10-09T15:07:22.699Z",
+    "updated_at": "2026-10-12T13:08:32.539Z"
+  }
+},
+{
+  "model": "turfapp.turf",
+  "pk": 4,
+  "fields": {
+    "owner": 4,
+    "name": "shivam turf",
+    "image": "turf_images/Turf_Booking_System_UML_Diagram.png",
+    "description": "for play your game",
+    "address": "sonai",
+    "city": "newasa",
+    "area": "landevadi",
+    "latitude": null,
+    "longitude": null,
+    "ground_type": "grass",
+    "open_time": "08:53:33",
+    "close_time": "12:00:00",
+    "price_per_hour": "799.72",
+    "status": "APPROVED",
+    "rating": "0.00",
+    "created_at": "2026-10-10T13:04:19.209Z",
+    "updated_at": "2026-10-10T13:24:54.682Z"
+  }
+},
+{
+  "model": "turfapp.turf",
+  "pk": 5,
+  "fields": {
+    "owner": 4,
+    "name": "mahakal turfs",
+    "image": "turf_images/Clean_Turf_Booking_ER_Diagram.png",
+    "description": "play the our games.",
+    "address": "lasur",
+    "city": "sambhajinagar",
+    "area": "gangapur",
+    "latitude": null,
+    "longitude": null,
+    "ground_type": "grass",
+    "open_time": null,
+    "close_time": null,
+    "price_per_hour": "1500.00",
+    "status": "APPROVED",
+    "rating": "0.00",
+    "created_at": "2026-10-11T14:33:53.998Z",
+    "updated_at": "2026-10-11T14:37:22.936Z"
+  }
+},
+{
+  "model": "turfapp.slot",
+  "pk": 11,
+  "fields": {
+    "turf": 4,
+    "date": "2026-10-18",
+    "start_time": "09:59:00",
+    "end_time": "10:59:00",
+    "price": "900.00",
+    "status": "AVAILABLE",
+    "created_at": "2026-10-11T03:29:20.274Z"
+  }
+},
+{
+  "model": "turfapp.slot",
+  "pk": 12,
+  "fields": {
+    "turf": 4,
+    "date": "2026-10-18",
+    "start_time": "20:05:00",
+    "end_time": "21:05:00",
+    "price": "1200.00",
+    "status": "AVAILABLE",
+    "created_at": "2026-10-11T13:33:24.858Z"
+  }
+},
+{
+  "model": "turfapp.slot",
+  "pk": 13,
+  "fields": {
+    "turf": 5,
+    "date": "2026-10-13",
+    "start_time": "09:59:00",
+    "end_time": "11:59:00",
+    "price": "1200.00",
+    "status": "AVAILABLE",
+    "created_at": "2026-10-12T03:29:19.249Z"
+  }
+},
+{
+  "model": "turfapp.slot",
+  "pk": 14,
+  "fields": {
+    "turf": 5,
+    "date": "2026-10-14",
+    "start_time": "01:00:00",
+    "end_time": "10:48:00",
+    "price": "1300.10",
+    "status": "AVAILABLE",
+    "created_at": "2026-10-13T12:18:45.462Z"
+  }
+},
+{
+  "model": "turfapp.turfsport",
+  "pk": 15,
+  "fields": {
+    "turf": 4,
+    "sport": 1
+  }
+},
+{
+  "model": "turfapp.turfsport",
+  "pk": 16,
+  "fields": {
+    "turf": 4,
+    "sport": 2
+  }
+},
+{
+  "model": "turfapp.turfsport",
+  "pk": 17,
+  "fields": {
+    "turf": 4,
+    "sport": 3
+  }
+},
+{
+  "model": "turfapp.turfsport",
+  "pk": 18,
+  "fields": {
+    "turf": 4,
+    "sport": 4
+  }
+},
+{
+  "model": "turfapp.turfsport",
+  "pk": 19,
+  "fields": {
+    "turf": 4,
+    "sport": 5
+  }
+},
+{
+  "model": "turfapp.turfsport",
+  "pk": 20,
+  "fields": {
+    "turf": 4,
+    "sport": 6
+  }
+},
+{
+  "model": "turfapp.turfsport",
+  "pk": 21,
+  "fields": {
+    "turf": 5,
+    "sport": 1
+  }
+},
+{
+  "model": "turfapp.turfsport",
+  "pk": 22,
+  "fields": {
+    "turf": 5,
+    "sport": 2
+  }
+},
+{
+  "model": "turfapp.turfsport",
+  "pk": 23,
+  "fields": {
+    "turf": 5,
+    "sport": 3
+  }
+},
+{
+  "model": "turfapp.turfsport",
+  "pk": 24,
+  "fields": {
+    "turf": 5,
+    "sport": 4
+  }
+},
+{
+  "model": "turfapp.turfsport",
+  "pk": 25,
+  "fields": {
+    "turf": 5,
+    "sport": 5
+  }
+},
+{
+  "model": "turfapp.turfsport",
+  "pk": 26,
+  "fields": {
+    "turf": 5,
+    "sport": 6
+  }
+},
+{
+  "model": "turfapp.turfsport",
+  "pk": 27,
+  "fields": {
+    "turf": 3,
+    "sport": 1
+  }
+},
+{
+  "model": "turfapp.turfsport",
+  "pk": 28,
+  "fields": {
+    "turf": 3,
+    "sport": 2
+  }
+},
+{
+  "model": "turfapp.turfsport",
+  "pk": 29,
+  "fields": {
+    "turf": 3,
+    "sport": 3
+  }
+},
+{
+  "model": "turfapp.turfsport",
+  "pk": 30,
+  "fields": {
+    "turf": 3,
+    "sport": 4
+  }
+},
+{
+  "model": "turfapp.turfsport",
+  "pk": 31,
+  "fields": {
+    "turf": 3,
+    "sport": 5
+  }
+},
+{
+  "model": "turfapp.turfsport",
+  "pk": 32,
+  "fields": {
+    "turf": 3,
+    "sport": 6
+  }
+},
+{
+  "model": "turfapp.booking",
+  "pk": 2,
+  "fields": {
+    "booking_code": "MT2026101203293213",
+    "user": 11,
+    "turf": 5,
+    "slot": 13,
+    "booking_date": "2026-10-12",
+    "amount": "1200.00",
+    "booking_status": "CANCELLED",
+    "payment_status": "SUCCESS",
+    "created_at": "2026-10-12T03:29:32.018Z"
+  }
+},
+{
+  "model": "turfapp.booking",
+  "pk": 3,
+  "fields": {
+    "booking_code": "MT2026101310380813",
+    "user": 13,
+    "turf": 5,
+    "slot": 13,
+    "booking_date": "2026-10-13",
+    "amount": "1200.00",
+    "booking_status": "PENDING",
+    "payment_status": "PENDING",
+    "created_at": "2026-10-13T10:38:08.382Z"
+  }
+},
+{
+  "model": "turfapp.booking",
+  "pk": 4,
+  "fields": {
+    "booking_code": "MT2026101312202514",
+    "user": 13,
+    "turf": 5,
+    "slot": 14,
+    "booking_date": "2026-10-14",
+    "amount": "1300.10",
+    "booking_status": "CANCELLED",
+    "payment_status": "SUCCESS",
+    "created_at": "2026-10-13T12:20:25.634Z"
+  }
+},
+{
+  "model": "sportsapp.sport",
+  "pk": 1,
+  "fields": {
+    "name": "football",
+    "icon": "football",
+    "status": true,
+    "created_at": "2026-09-30T14:37:17.134Z"
+  }
+},
+{
+  "model": "sportsapp.sport",
+  "pk": 2,
+  "fields": {
+    "name": "Cricket",
+    "icon": "",
+    "status": true,
+    "created_at": "2026-09-30T14:37:52.897Z"
+  }
+},
+{
+  "model": "sportsapp.sport",
+  "pk": 3,
+  "fields": {
+    "name": "Tennis cricket",
+    "icon": "Tennis",
+    "status": true,
+    "created_at": "2026-10-10T01:00:49.446Z"
+  }
+},
+{
+  "model": "sportsapp.sport",
+  "pk": 4,
+  "fields": {
+    "name": "Box tennis cricket",
+    "icon": "box",
+    "status": true,
+    "created_at": "2026-10-10T01:01:24.442Z"
+  }
+},
+{
+  "model": "sportsapp.sport",
+  "pk": 5,
+  "fields": {
+    "name": "Box hockey",
+    "icon": "Hockyey",
+    "status": true,
+    "created_at": "2026-10-10T01:01:51.543Z"
+  }
+},
+{
+  "model": "sportsapp.sport",
+  "pk": 6,
+  "fields": {
+    "name": "Badminton",
+    "icon": "Bad minton",
+    "status": true,
+    "created_at": "2026-10-10T01:02:18.653Z"
+  }
+}
+]
